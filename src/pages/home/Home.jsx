@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SliderHome from '../../components/SliderHome'
+import OurNetwork from '../../components/OurNetwork';
 
 
 const Home = () => {
@@ -22,6 +23,11 @@ const Home = () => {
         <ChatInfo onClose={toggleModal} />
       </Modal> */}
       <SliderHome />
+      <div className="flex !mt-36 justify-center items-center">
+      <div className="max-w-7xl">
+      <OurNetwork/>
+      </div>
+      </div>
       {/* <Welcome />
       <AboutUs />
       <InfiniteSlider />

@@ -9,41 +9,110 @@ import {
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { NavLink } from "react-router-dom";
 // Uncomment and fix the path to your logo if available
 // import Logo from "../../images/logo.svg";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [toursOpen, setToursOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const toggleToursMenu = () => {
+    setToursOpen(!toursOpen);
+  };
+
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: "left", padding: "20px" }}>
       <Typography
-        color={"goldenrod"}
+        color={"black"}
         variant="h6"
         component="div"
-        sx={{ flexGrow: 1, my: 2 }}
+        sx={{ flexGrow: 1, my: 2, fontWeight: 'bold', textAlign: 'center' }}
       >
         {/* Replace this with <img src={Logo} alt="logo" height="70" width="200" /> if you have a logo */}
         My Website
       </Typography>
-      <Divider />
+      <Divider sx={{ mb: 2 }} />
       <ul className="mobile-navigation">
         <li>
-          <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => isActive ? 'active' : ''}
+            onClick={() => setMobileOpen(false)}
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/menu" className={({ isActive }) => isActive ? 'active' : ''}>Menu</NavLink>
+          <NavLink 
+            to="/about" 
+            className={({ isActive }) => isActive ? 'active' : ''}
+            onClick={() => setMobileOpen(false)}
+          >
+            About
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>
+          <div 
+            className="mobile-tours-menu"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleToursMenu();
+            }}
+          >
+            <div className="mobile-tours-header">
+              Tours
+              <KeyboardArrowDownIcon 
+                sx={{ 
+                  fontSize: 20, 
+                  transform: toursOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                  transition: 'transform 0.3s ease'
+                }} 
+              />
+            </div>
+            {toursOpen && (
+              <ul className="mobile-dropdown-menu">
+                <li>
+                  <NavLink 
+                    to="/tours/international"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    International Tours
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink 
+                    to="/tours/domestic"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Domestic Tours
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink 
+                    to="/tours/hajj-umrah"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Hajj & Umrah
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </div>
         </li>
         <li>
-          <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
+          <NavLink 
+            to="/contact" 
+            className={({ isActive }) => isActive ? 'active' : ''}
+            onClick={() => setMobileOpen(false)}
+          >
+            Contact
+          </NavLink>
         </li>
       </ul>
     </Box>
@@ -52,22 +121,25 @@ const Navbar = () => {
   return (
     <>
       <Box>
-        <AppBar component="nav" sx={{ bgcolor: "black" }}>
+        <AppBar component="nav" sx={{ bgcolor: "white", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
           <Toolbar>
             <IconButton
-              color="inherit"
+              sx={{ 
+                mr: 2, 
+                display: { sm: "none" },
+                color: "black"
+              }}
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
             >
               <MenuIcon />
             </IconButton>
             <Typography
-              color={"goldenrod"}
+              color={"black"}
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, fontWeight: 'bold' }}
             >
               {/* Uncomment below if Logo is imported */}
               {/* <img src={Logo} alt="logo" height="70" width="250" /> */}
@@ -76,16 +148,38 @@ const Navbar = () => {
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <ul className="navigation-menu">
                 <li>
-                  <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink>
+                  <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>
+                    Home
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/menu" className={({ isActive }) => isActive ? 'active' : ''}>Menu</NavLink>
+                  <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>
+                    About
+                  </NavLink>
+                </li>
+                <li className="dropdown">
+                  <NavLink to="/tours" className={({ isActive }) => isActive ? 'active' : ''}>
+                    <span className="dropdown-toggle">
+                      Tours
+                      <KeyboardArrowDownIcon className="chevron-icon" sx={{ fontSize: 16 }} />
+                    </span>
+                  </NavLink>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <NavLink to="/tours/international">International Tours</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/tours/domestic">Domestic Tours</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/tours/hajj-umrah">Hajj & Umrah</NavLink>
+                    </li>
+                  </ul>
                 </li>
                 <li>
-                  <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
+                  <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>
+                    Contact
+                  </NavLink>
                 </li>
               </ul>
             </Box>
