@@ -1,5 +1,6 @@
 import React from 'react';
-import image3 from '/public/images/slider-three.jpg';
+import { motion } from 'framer-motion';
+import image3 from '/public/images/bannerchooseus.jpg';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -25,44 +26,248 @@ const WhyChooseUsBanner = ({
     }
   ]
 }) => {
+  // Container animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  // Background image animation
+  const backgroundVariants = {
+    hidden: { scale: 1.1, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 1.2,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  // Overlay animation
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.3
+      }
+    }
+  };
+
+  // Title animation variants
+  const titleVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.9
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  // Subtitle animation variants
+  const subtitleVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        delay: 0.2
+      }
+    }
+  };
+
+  // Feature card animation variants
+  const featureVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 60,
+      scale: 0.8
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  // Icon animation variants
+  const iconVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0,
+      rotate: -180
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        delay: 0.3
+      }
+    }
+  };
+
+  // Hover animation for feature cards
+  const featureHover = {
+    y: -10,
+    scale: 1.05,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut"
+    }
+  };
+
+  // Icon hover animation
+  const iconHover = {
+    scale: 1.2,
+    rotate: 10,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut"
+    }
+  };
+
   return (
-    <div className="relative !mt-20 w-full h-auto mb-10">
-      <img 
+    <motion.div 
+      className="relative !mt-20 w-full h-auto mb-10"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      {/* Background Image with Animation */}
+      <motion.img 
         className="w-full h-full object-cover absolute inset-0 z-0" 
         src={image3} 
-        alt="ARJ Travel Background" 
+        alt="ARJ Travel Background"
+        variants={backgroundVariants}
       />
-      <div className="absolute inset-0 bg-[rgba(0,0,0,0.5)] z-10" />
-      <div className="relative z-20 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 !pt-10 md:mb-12">
-          <h1 className="text-white text-3xl md:text-4xl font-bold mb-2 md:mb-4">
+      
+      {/* Animated Overlay */}
+      <motion.div 
+        className="absolute inset-0 bg-[rgba(0,0,0,0.5)] z-10"
+        variants={overlayVariants}
+      />
+      
+      {/* Content Container */}
+      <motion.div 
+        className="relative z-20 py-12 px-4 sm:px-6 lg:px-8"
+        variants={containerVariants}
+      >
+        {/* Header Section */}
+        <motion.div 
+          className="text-center mb-8 !pt-10 md:mb-12"
+          variants={containerVariants}
+        >
+          <motion.h1 
+            className="text-white title-white font-bold mb-2 md:mb-4"
+            variants={titleVariants}
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.3 }
+            }}
+          >
             {title}
-          </h1>
-          <p className="text-white text-center text-base md:text-lg mx-auto px-4 ">
+          </motion.h1>
+          <motion.p 
+            className="subtitle-white text-center text-base md:text-lg mx-auto px-4"
+            variants={subtitleVariants}
+          >
             {subtitle}
-          </p>
-        </div>
-        <div className="container">
+          </motion.p>
+        </motion.div>
+
+        {/* Features Section */}
+        <motion.div 
+          className="container"
+          variants={containerVariants}
+        >
           <div className="flex md:flex-row flex-wrap justify-center items-center gap-6 md:gap-8 lg:gap-10">
             {features.map((feature, index) => (
-              <div key={index} className="text-center w-[300px] text-white px-4">
-                <div className="flex justify-center !mb-5">
-                  <div className="md:size-16 size-12 bg-white rounded-full flex items-center justify-center shadow-lg">
+              <motion.div 
+                key={index} 
+                className="text-center w-[300px] text-white px-4"
+                variants={featureVariants}
+                whileHover={featureHover}
+                custom={index}
+              >
+                {/* Icon Container */}
+                <motion.div 
+                  className="flex justify-center !mb-5"
+                  variants={iconVariants}
+                >
+                  <motion.div 
+                    className="md:size-16 size-12 bg-white rounded-full flex items-center justify-center shadow-lg"
+                    whileHover={iconHover}
+                    whileTap={{ scale: 0.9 }}
+                  >
                     {feature.icon}
-                  </div>
-                </div>
-                <h3 className="text-sm md:text-md font-semibold mb-2 md:mb-4 tracking-wide px-2">
+                  </motion.div>
+                </motion.div>
+
+                {/* Feature Title */}
+                <motion.h3 
+                  className="text-sm md:text-md font-semibold mb-2 md:mb-4 tracking-wide px-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    delay: 0.5 + index * 0.1, 
+                    duration: 0.5,
+                    ease: "easeOut"
+                  }}
+                  viewport={{ once: true }}
+                >
                   {feature.title}
-                </h3>
-                <p className="text-xs md:text-sm opacity-90 leading-relaxed mx-auto">
+                </motion.h3>
+
+                {/* Feature Description */}
+                <motion.p 
+                  className="text-xs md:text-sm opacity-90 leading-relaxed mx-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    delay: 0.7 + index * 0.1, 
+                    duration: 0.6,
+                    ease: "easeOut"
+                  }}
+                  viewport={{ once: true }}
+                >
                   {feature.description}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
