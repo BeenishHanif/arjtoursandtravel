@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const Slide = ({ image, heading, subheading, description, buttonText, link }) => (
@@ -9,10 +10,25 @@ export const Slide = ({ image, heading, subheading, description, buttonText, lin
       <p className="text-sm md:text-base lg:text-lg mb-4 max-w-2xl">{description}</p>
       {buttonText && (
         <Link to={link}>
-          <button className="bg-red hover:bg-white hover:text-red text-white font-bold py-2 px-6 rounded uppercase transition-all duration-300">
-            {buttonText}
-          </button>
-        </Link>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: '#023f82',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase',
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: 0,
+                  marginTop:2,
+                  '&:hover': {
+                    backgroundColor: '#2c72b5',
+                  },
+                }}
+              >
+               {buttonText}
+              </Button>
+            </Link>
       )}
     </div>
   </div>

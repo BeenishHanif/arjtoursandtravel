@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import SliderHome from '../../components/SliderHome'
 import OurNetwork from '../../components/OurNetwork';
 import BestOffersHome from '../../components/BestOffersHome';
+import WhyChooseUsBanner from '../../components/WhyChooseUsBanner';
+import ClientReviews from '../../components/ClientReviews';
 
 
 const Home = () => {
@@ -30,6 +32,8 @@ const Home = () => {
       <OurNetwork/>
       </div>
       </div>
+      <WhyChooseUsBanner/>
+      <ClientReviews/>
       {/* <Welcome />
       <AboutUs />
       <InfiniteSlider />

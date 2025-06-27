@@ -72,7 +72,7 @@ const BestOffersHome = () => {
             <p className="!text-lg font-[700] text-[#535252] md:text-3xl  mb-4">Explore Our top rated tours</p>
         </div>
 
-        <div className="grid">
+        <div className="grid-offers">
           {tourData.map((tour) => (
             <div
               key={tour.id}
@@ -101,7 +101,7 @@ const BestOffersHome = () => {
                   </span>
                 </div>
 
-                <div className="footer">
+                <div className="footer-offers">
                   <div className="duration-section">
 
                     <span className="duration-text">{tour.duration}</span>
