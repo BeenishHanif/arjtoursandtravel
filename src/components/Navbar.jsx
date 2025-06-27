@@ -11,8 +11,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { NavLink } from "react-router-dom";
-// Uncomment and fix the path to your logo if available
-// import Logo from "../../images/logo.svg";
+import Logo from "/public/images/logo.jpeg";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -141,9 +140,7 @@ const Navbar = () => {
               component="div"
               sx={{ flexGrow: 1, fontWeight: 'bold' }}
             >
-              {/* Uncomment below if Logo is imported */}
-              {/* <img src={Logo} alt="logo" height="70" width="250" /> */}
-              My Website
+              <img src={Logo} alt="logo" height="70" width="250" />
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <ul className="navigation-menu">
