@@ -156,25 +156,19 @@ const WhyChooseUsBanner = ({
   };
 
   return (
-    <motion.div 
+    <div 
       className="relative !mt-20 w-full h-auto mb-10"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
     >
       {/* Background Image with Animation */}
-      <motion.img 
+      <img 
         className="w-full h-full object-cover absolute inset-0 z-0" 
         src={image3} 
         alt="ARJ Travel Background"
-        variants={backgroundVariants}
       />
       
       {/* Animated Overlay */}
-      <motion.div 
+      <div 
         className="absolute inset-0 bg-[rgba(0,0,0,0.5)] z-10"
-        variants={overlayVariants}
       />
       
       {/* Content Container */}
@@ -267,7 +261,7 @@ const WhyChooseUsBanner = ({
           </div>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
