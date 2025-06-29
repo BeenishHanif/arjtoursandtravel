@@ -157,7 +157,7 @@ const WhyChooseUsBanner = ({
 
   return (
     <div 
-      className="relative !mt-20 w-full h-auto mb-10"
+      className="relative mt-20 w-full h-auto "
     >
       {/* Background Image with Animation */}
       <img 
@@ -173,16 +173,16 @@ const WhyChooseUsBanner = ({
       
       {/* Content Container */}
       <motion.div 
-        className="relative z-20 py-12 px-4 sm:px-6 lg:px-8"
+        className="relative z-20"
         variants={containerVariants}
       >
         {/* Header Section */}
         <motion.div 
-          className="text-center mb-8 !pt-10 md:mb-12"
+          className="text-center pt-10"
           variants={containerVariants}
         >
           <motion.h1 
-            className="text-white title-white font-bold mb-2 md:mb-4"
+            className="text-white title-white font-bold "
             variants={titleVariants}
             whileHover={{ 
               scale: 1.05,
@@ -192,7 +192,7 @@ const WhyChooseUsBanner = ({
             {title}
           </motion.h1>
           <motion.p 
-            className="subtitle-white text-center text-base md:text-lg mx-auto px-4"
+            className="subtitle-white text-center text-base md:text-lg mx-auto "
             variants={subtitleVariants}
           >
             {subtitle}
@@ -208,14 +208,14 @@ const WhyChooseUsBanner = ({
             {features.map((feature, index) => (
               <motion.div 
                 key={index} 
-                className="text-center w-[300px] text-white px-4"
+                className="text-center w-[300px] text-white "
                 variants={featureVariants}
                 whileHover={featureHover}
                 custom={index}
               >
                 {/* Icon Container */}
                 <motion.div 
-                  className="flex justify-center !mb-5"
+                  className="flex justify-center mb-5"
                   variants={iconVariants}
                 >
                   <motion.div 
@@ -229,7 +229,7 @@ const WhyChooseUsBanner = ({
 
                 {/* Feature Title */}
                 <motion.h3 
-                  className="text-sm md:text-md font-semibold mb-2 md:mb-4 tracking-wide px-2"
+                  className="text-sm md:text-md font-semibold tracking-wide"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ 

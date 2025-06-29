@@ -33,8 +33,7 @@ const Navbar = () => {
         component="div"
         sx={{ flexGrow: 1, my: 2, fontWeight: 'bold', textAlign: 'center' }}
       >
-        {/* Replace this with <img src={Logo} alt="logo" height="70" width="200" /> if you have a logo */}
-        My Website
+              <img src={Logo} alt="logo" height="70" width="250" />
       </Typography>
       <Divider sx={{ mb: 2 }} />
       <ul className="mobile-navigation">
@@ -49,7 +48,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink 
-            to="/about" 
+            to="/about-us" 
             className={({ isActive }) => isActive ? 'active' : ''}
             onClick={() => setMobileOpen(false)}
           >
@@ -106,7 +105,7 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink 
-            to="/contact" 
+            to="/contact-us" 
             className={({ isActive }) => isActive ? 'active' : ''}
             onClick={() => setMobileOpen(false)}
           >
@@ -150,7 +149,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>
+                  <NavLink to="/about-us" className={({ isActive }) => isActive ? 'active' : ''}>
                     About
                   </NavLink>
                 </li>
@@ -174,7 +173,7 @@ const Navbar = () => {
                   </ul>
                 </li>
                 <li>
-                  <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>
+                  <NavLink to="/contact-us" className={({ isActive }) => isActive ? 'active' : ''}>
                     Contact
                   </NavLink>
                 </li>

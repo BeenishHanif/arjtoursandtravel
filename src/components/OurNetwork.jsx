@@ -5,22 +5,22 @@ import image3 from '/public/images/network.jpg'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button } from '@mui/material';
   // Container animation variants
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         duration: 0.6,
-        staggerChildren: 0.15
+        staggerChildren: 0.2
       }
     }
   };
 
-  // Header animation variants
-  const headerVariants = {
+  const textVariants = {
     hidden: { 
       opacity: 0, 
-      y: 50
+      y: 30
     },
     visible: {
       opacity: 1,
@@ -37,15 +37,14 @@ const OurNetwork = () => {
     <>
      <motion.div 
         className="flex w-full flex-col justify-center items-center"
-        variants={containerVariants}
+         variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       >
         <motion.h1 
           className="title"
-          variants={headerVariants}
-          whileHover={{ 
-            scale: 1.05,
-            transition: { duration: 0.3 }
-          }}
+           variants={textVariants}
         >
           Our Network
         </motion.h1>
@@ -84,11 +83,8 @@ const OurNetwork = () => {
               With strong partnerships across airlines, hotels, and local operators worldwide, we guarantee competitive rates, seamless coordination,
               and 24/7 support throughout your journey.
               <br />
-
             </p>
-
-
-            <Link to="/about">
+            <Link to="/about-us">
               <Button
                 variant="contained"
                 endIcon={<ArrowForwardIcon />}

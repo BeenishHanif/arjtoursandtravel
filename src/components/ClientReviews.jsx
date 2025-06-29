@@ -122,7 +122,7 @@ const ClientReviews = ({
           {testimonials.map((testimonial, index) => (
             <motion.div 
               key={index} 
-              className="text-center w-[300px] p-4 sm:p-6 lg:p-8 duration-300 "
+              className="text-center w-[300px] duration-300 "
               variants={cardVariants}
               whileHover={cardHover}
               custom={index}
@@ -143,7 +143,7 @@ const ClientReviews = ({
               </motion.div>
               
               <motion.p 
-                className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-4 sm:mb-5 lg:mb-6 px-2 sm:px-3 lg:px-4 min-h-[60px] sm:min-h-[80px] lg:min-h-[100px] flex items-center"
+                className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed mb-4 min-h-[60px] sm:min-h-[80px] lg:min-h-[100px] flex items-center"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.4 + index * 0.1, duration: 0.6 }}
@@ -153,7 +153,7 @@ const ClientReviews = ({
               </motion.p>
               
               <motion.div 
-                className="text-xs sm:text-sm md:text-base font-bold text-[#023f82] pt-3 sm:pt-4"
+                className="text-xs sm:text-sm md:text-base font-bold text-[#023f82]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
