@@ -7,6 +7,7 @@ import ContactUs from "../pages/contact/Contact";
 import InternationalTour from "../pages/tours/InternationalTour";
 import DomesticTour from "../pages/tours/DomesticTour";
 import UmrahHajjTour from "../pages/tours/UmrahHajjTour";
+import TourDetail from "../pages/tours/TourDetail";
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         {
         path: "/tours/hajj-umrah",
         element: <UmrahHajjTour />
+      },
+       {
+        path: "/tour/:id" ,
+        element: <TourDetail />
       },
         {
         path: "/contact-us",
