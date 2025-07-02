@@ -2,6 +2,8 @@ import React from 'react'
 import image3 from '/public/images/slider-one.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
+import { tourData } from '../../assets/data/tours';
+import CardTour from '../../components/CardTour';
 
   const headerVariants = {
     hidden: { 
@@ -157,6 +159,26 @@ import { motion } from 'framer-motion'
       }
     }
   };
+
+  
+  // Card hover animation
+  const cardHover = {
+    y: -8,
+    scale: 1.02,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut"
+    }
+  };
+
+  // Image hover animation
+  const imageHover = {
+    scale: 1.1,
+    transition: {
+      duration: 0.4,
+      ease: "easeInOut"
+    }
+  };
 const DomesticTour = () => {
   return (
        <motion.div
@@ -171,6 +193,23 @@ const DomesticTour = () => {
   subheading="Discover the Beauty of Pakistan"
   description="Explore the breathtaking landscapes and cultural heritage of Pakistan with our comfortable domestic tour packages."
 />    
+
+<div className='container'>
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+      {tourData.map((tour, index) => (
+        <CardTour
+          key={tour.id}
+          tour={tour}
+          index={index}
+          cardVariants={cardVariants}
+          cardHover={cardHover}
+          imageVariants={imageVariants}
+          imageHover={imageHover}
+          contentVariants={contentVariants}
+        />
+      ))}
+    </div>
+   </div>
     </motion.div>
   )
 }

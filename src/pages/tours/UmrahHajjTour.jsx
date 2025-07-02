@@ -2,6 +2,8 @@ import React from 'react'
 import image2 from '/public/images/slider-two.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
+import { tourData } from '../../assets/data/tours';
+import CardTour from '../../components/CardTour';
 
   const headerVariants = {
     hidden: { 
@@ -157,6 +159,26 @@ import { motion } from 'framer-motion'
       }
     }
   };
+
+  
+  // Card hover animation
+  const cardHover = {
+    y: -8,
+    scale: 1.02,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut"
+    }
+  };
+
+  // Image hover animation
+  const imageHover = {
+    scale: 1.1,
+    transition: {
+      duration: 0.4,
+      ease: "easeInOut"
+    }
+  };
 const UmrahHajjTour = () => {
   return (
        <motion.div
@@ -172,6 +194,22 @@ const UmrahHajjTour = () => {
   description="Experience a spiritually fulfilling Hajj and Umrah with our trusted and well-organized pilgrimage packages."
 />
 
+<div className='container'>
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+      {tourData.map((tour, index) => (
+        <CardTour
+          key={tour.id}
+          tour={tour}
+          index={index}
+          cardVariants={cardVariants}
+          cardHover={cardHover}
+          imageVariants={imageVariants}
+          imageHover={imageHover}
+          contentVariants={contentVariants}
+        />
+      ))}
+    </div>
+   </div>
      
     </motion.div>
   )
