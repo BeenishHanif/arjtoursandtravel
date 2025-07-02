@@ -1,5 +1,5 @@
 import React from 'react'
-import image1 from '/public/images/slider-one.jpg'
+import image1 from '/public/images/contact.jpg';
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
 import Contact from '../../components/Contact'

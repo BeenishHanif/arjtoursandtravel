@@ -11,7 +11,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { NavLink } from "react-router-dom";
-import Logo from "/public/images/logo.jpeg";
+import Logo from "/public/images/logo.png";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,7 +33,7 @@ const Navbar = () => {
         component="div"
         sx={{ flexGrow: 1, my: 2, fontWeight: 'bold', textAlign: 'center' }}
       >
-              <img src={Logo} alt="logo" height="70" width="250" />
+              {/* <img src={Logo} alt="logo" height="70" width="250" /> */}
       </Typography>
       <Divider sx={{ mb: 2 }} />
       <ul className="mobile-navigation">
@@ -119,7 +119,7 @@ const Navbar = () => {
   return (
     <>
       <Box>
-        <AppBar component="nav" sx={{ bgcolor: "white", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
+        <AppBar component="nav" sx={{ bgcolor: "#f9f8f8", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
           <Toolbar>
             <IconButton
               sx={{ 
@@ -154,7 +154,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li className="dropdown">
-                  <NavLink to="/tours" className={({ isActive }) => isActive ? 'active' : ''}>
+                  <NavLink to="/tours/domestic" className={({ isActive }) => isActive ? 'active' : ''}>
                     <span className="dropdown-toggle">
                       Tours
                       <KeyboardArrowDownIcon className="chevron-icon" sx={{ fontSize: 16 }} />
@@ -182,16 +182,17 @@ const Navbar = () => {
           </Toolbar>
         </AppBar>
 
-        <Box component="nav">
+        <Box  component="nav">
           <Drawer
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
             sx={{
-              display: { xs: "block", sm: "none" },
+              display: { xs: "block", sm: "none", bgcolor: "#f9f8f8" },
               "& .MuiDrawer-paper": {
                 boxSizing: "border-box",
                 width: 240,
+                bgcolor: "#f9F8F8",
               },
             }}
           >

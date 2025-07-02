@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import image1 from '/public/images/slider-one.jpg';
+import image2 from '/public/images/mountains.jpg';
 import { MapPin } from 'lucide-react';
 
 const Contact = () => {
@@ -26,7 +26,7 @@ const Contact = () => {
     {/* Left Side - Image & Info */}
     <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl flex">
       <img
-        src={image1}
+        src={image2}
         alt="ARJ Office"
         className="w-full object-cover"
       />

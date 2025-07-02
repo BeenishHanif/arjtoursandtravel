@@ -4,6 +4,9 @@ import Home from "../pages/home/Home"
 import ScrollToTop from "../components/ScrollToTop";
 import About from "../pages/about/About";
 import ContactUs from "../pages/contact/Contact";
+import InternationalTour from "../pages/tours/InternationalTour";
+import DomesticTour from "../pages/tours/DomesticTour";
+import UmrahHajjTour from "../pages/tours/UmrahHajjTour";
 
 
 const router = createBrowserRouter([
@@ -23,6 +26,18 @@ const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <About />
+      },
+        {
+        path: "/tours/international",
+        element: <InternationalTour/>
+      },
+        {
+        path: "/tours/domestic",
+        element: <DomesticTour />
+      },
+        {
+        path: "/tours/hajj-umrah",
+        element: <UmrahHajjTour />
       },
         {
         path: "/contact-us",

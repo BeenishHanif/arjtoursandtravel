@@ -49,7 +49,7 @@ const OurNetwork = () => {
           Our Network
         </motion.h1>
       </motion.div>
-      <div className="flex flex-col gap-4 lg:flex-row !px-8 lg:!px-3 bg-base-100 my-5">
+      <div className="flex flex-col gap-4 lg:flex-row px-3 bg-base-100 my-5">
         <div
           initial={{ translateX: -150 }}
           whileInView={{ translateX: 0 }}
