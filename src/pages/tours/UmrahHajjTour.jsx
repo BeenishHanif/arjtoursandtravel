@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import image2 from '/public/images/slider-two.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
 import { tourData } from '../../assets/data/tours';
 import CardTour from '../../components/CardTour';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
+import Button from '@mui/material/Button';
 
 const headerVariants = {
   hidden: {
@@ -180,6 +184,28 @@ const imageHover = {
   }
 };
 const UmrahHajjTour = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Only filter when searchQuery is updated
+  const filteredTours = useMemo(() => {
+    if (!searchQuery) return tourData;
+    return tourData.filter((tour) =>
+      tour.Destinations?.some((dest) =>
+        dest.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    );
+  }, [searchQuery]);
+
+  const handleSearchClick = () => {
+    setSearchQuery(searchTerm);
+  };
+  useEffect(() => {
+    if (searchTerm.trim() === '') {
+      setSearchQuery('');
+    }
+  }, [searchTerm]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -193,6 +219,59 @@ const UmrahHajjTour = () => {
         subheading="Spiritual Journeys with Care"
         description="Experience a spiritually fulfilling Hajj and Umrah with our trusted and well-organized pilgrimage packages."
       />
+      <div className="w-full flex justify-center -mt-10 px-4 z-10 relative">
+        <div className="flex items-center w-full max-w-4xl bg-white rounded-[20px] shadow  overflow-hidden">
+          <TextField
+            variant="outlined"
+            placeholder="Destination"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            fullWidth
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearchClick();
+              }
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon color="action" />
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                border: 'none',
+                height: 60,
+                borderRadius: 0,
+                pl: 2,
+              },
+              '& fieldset': {
+                border: 'none',
+              },
+            }}
+          />
+
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              height: '60px',
+              borderRadius: 0,
+              px: 4,
+              textTransform: 'none',
+              bgcolor: '#3b82f6',
+              fontSize: '15px',
+              '&:hover': {
+                bgcolor: '#2563eb',
+              },
+            }}
+            onClick={handleSearchClick}
+          >
+            Search
+          </Button>
+        </div>
+      </div>
 
       <div className='container'>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
