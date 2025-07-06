@@ -33,13 +33,13 @@ const Navbar = () => {
         component="div"
         sx={{ flexGrow: 1, my: 2, fontWeight: 'bold', textAlign: 'center' }}
       >
-              {/* <img src={Logo} alt="logo" height="70" width="250" /> */}
+        {/* <img src={Logo} alt="logo" height="70" width="250" /> */}
       </Typography>
       <Divider sx={{ mb: 2 }} />
       <ul className="mobile-navigation">
         <li>
-          <NavLink 
-            to="/" 
+          <NavLink
+            to="/"
             className={({ isActive }) => isActive ? 'active' : ''}
             onClick={() => setMobileOpen(false)}
           >
@@ -47,8 +47,8 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink 
-            to="/about-us" 
+          <NavLink
+            to="/about-us"
             className={({ isActive }) => isActive ? 'active' : ''}
             onClick={() => setMobileOpen(false)}
           >
@@ -56,7 +56,7 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <div 
+          <div
             className="mobile-tours-menu"
             onClick={(e) => {
               e.stopPropagation();
@@ -65,18 +65,18 @@ const Navbar = () => {
           >
             <div className="mobile-tours-header">
               Tours
-              <KeyboardArrowDownIcon 
-                sx={{ 
-                  fontSize: 20, 
+              <KeyboardArrowDownIcon
+                sx={{
+                  fontSize: 20,
                   transform: toursOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                   transition: 'transform 0.3s ease'
-                }} 
+                }}
               />
             </div>
             {toursOpen && (
               <ul className="mobile-dropdown-menu">
                 <li>
-                  <NavLink 
+                  <NavLink
                     to="/tours/international"
                     onClick={() => setMobileOpen(false)}
                   >
@@ -84,7 +84,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink 
+                  <NavLink
                     to="/tours/domestic"
                     onClick={() => setMobileOpen(false)}
                   >
@@ -92,7 +92,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink 
+                  <NavLink
                     to="/tours/hajj-umrah"
                     onClick={() => setMobileOpen(false)}
                   >
@@ -104,8 +104,8 @@ const Navbar = () => {
           </div>
         </li>
         <li>
-          <NavLink 
-            to="/contact-us" 
+          <NavLink
+            to="/contact-us"
             className={({ isActive }) => isActive ? 'active' : ''}
             onClick={() => setMobileOpen(false)}
           >
@@ -122,8 +122,8 @@ const Navbar = () => {
         <AppBar component="nav" sx={{ bgcolor: "#f9f8f8", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
           <Toolbar>
             <IconButton
-              sx={{ 
-                mr: 2, 
+              sx={{
+                mr: 2,
                 display: { sm: "none" },
                 color: "black"
               }}
@@ -139,7 +139,9 @@ const Navbar = () => {
               component="div"
               sx={{ flexGrow: 1, fontWeight: 'bold' }}
             >
-              <img src={Logo} alt="logo" height="70" width="250" />
+              <NavLink to="/">
+                <img src={Logo} alt="logo" height="70" width="250" />
+              </NavLink>
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               <ul className="navigation-menu">
@@ -182,7 +184,7 @@ const Navbar = () => {
           </Toolbar>
         </AppBar>
 
-        <Box  component="nav">
+        <Box component="nav">
           <Drawer
             variant="temporary"
             open={mobileOpen}
