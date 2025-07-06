@@ -27,7 +27,6 @@ import {
   Close as CloseIcon,
   Sort as SortIcon
 } from '@mui/icons-material';
-import { Helmet } from 'react-helmet-async';
 
 const headerVariants = {
   hidden: {
@@ -342,14 +341,6 @@ const DomesticTour = () => {
   );
 
   return (
-    <>
-
-<Helmet>
-  <title>Domestic Tours | Arj Travel and Tours</title>
-  <meta name="description" content="Explore the beauty of Pakistan with our specially crafted domestic tour packages. From valleys to cities, travel with comfort and ease." />
-  <meta name="keywords" content="Pakistan Tours, Domestic Tours, Northern Areas, Murree, Skardu, Hunza, Arj Travel" />
-</Helmet>
-
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -487,7 +478,6 @@ const DomesticTour = () => {
         </div>
       </div>
     </motion.div>
-    </>
   );
 };
 
