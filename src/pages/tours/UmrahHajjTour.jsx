@@ -27,6 +27,7 @@ import {
   Close as CloseIcon,
   Sort as SortIcon
 } from '@mui/icons-material';
+import { Helmet } from 'react-helmet-async';
 
 const headerVariants = {
   hidden: {
@@ -195,13 +196,13 @@ const cardHover = {
 };
 
 // Image hover animation
-  const imageHover = {
-    scale: 1.1,
-    transition: {
-      duration: 0.4,
-      ease: "easeInOut"
-    }
-  };
+const imageHover = {
+  scale: 1.1,
+  transition: {
+    duration: 0.4,
+    ease: "easeInOut"
+  }
+};
 
 
 const UmrahHajjTour = () => {
@@ -341,143 +342,150 @@ const UmrahHajjTour = () => {
   );
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Slide Section */}
-      <Slide
-        image={image2}
-        heading="Hajj & Umrah"
-        subheading="Spiritual Journeys with Care"
-        description="Experience a spiritually fulfilling Hajj and Umrah with our trusted and well-organized pilgrimage packages."
-      />
+    <>
+      <Helmet>
+        <title>Umrah & Hajj Packages | Arj Travel and Tours</title>
+        <meta name="description" content="Book affordable and guided Umrah & Hajj packages with Arj Travel and Tours. Safe, spiritual, and well-planned journeys to Makkah and Madinah." />
+        <meta name="keywords" content="Umrah, Hajj, Pilgrimage, Saudi Arabia, Makkah, Madinah, Islamic Tours" />
+      </Helmet>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Slide Section */}
+        <Slide
+          image={image2}
+          heading="Hajj & Umrah"
+          subheading="Spiritual Journeys with Care"
+          description="Experience a spiritually fulfilling Hajj and Umrah with our trusted and well-organized pilgrimage packages."
+        />
 
-      {/* Search Bar with Filter Button */}
-      <div className="w-full flex justify-center -mt-10 px-4 z-10 relative">
-        <div className="flex items-center w-full max-w-4xl bg-white rounded-[20px] shadow overflow-hidden">
-          <TextField
-            variant="outlined"
-            placeholder="Destination"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            fullWidth
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleSearchClick();
-              }
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon color="action" />
-                </InputAdornment>
-              ),
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                border: 'none',
-                height: 60,
-                borderRadius: 0,
-                pl: 2,
-              },
-              '& fieldset': {
-                border: 'none',
-              },
-            }}
-          />
-
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              height: '60px',
-              borderRadius: 0,
-              px: 4,
-              textTransform: 'none',
-              bgcolor: '#3b82f6',
-              fontSize: '15px',
-              '&:hover': {
-                bgcolor: '#2563eb',
-              },
-            }}
-            onClick={handleSearchClick}
-          >
-            Search
-          </Button>
-
-          {isMobile && (
-            <IconButton
-              onClick={toggleDrawer(true)}
+        {/* Search Bar with Filter Button */}
+        <div className="w-full flex justify-center -mt-10 px-4 z-10 relative">
+          <div className="flex items-center w-full max-w-4xl bg-white rounded-[20px] shadow overflow-hidden">
+            <TextField
+              variant="outlined"
+              placeholder="Destination"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              fullWidth
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearchClick();
+                }
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon color="action" />
+                  </InputAdornment>
+                ),
+              }}
               sx={{
-                height: '60px',
-                width: '60px',
-                borderRadius: 0,
-                bgcolor: '#f3f4f6',
-                '&:hover': {
-                  bgcolor: '#e5e7eb',
+                '& .MuiOutlinedInput-root': {
+                  border: 'none',
+                  height: 60,
+                  borderRadius: 0,
+                  pl: 2,
+                },
+                '& fieldset': {
+                  border: 'none',
                 },
               }}
+            />
+
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                height: '60px',
+                borderRadius: 0,
+                px: 4,
+                textTransform: 'none',
+                bgcolor: '#3b82f6',
+                fontSize: '15px',
+                '&:hover': {
+                  bgcolor: '#2563eb',
+                },
+              }}
+              onClick={handleSearchClick}
             >
-              <FilterListIcon />
-            </IconButton>
-          )}
+              Search
+            </Button>
+
+            {isMobile && (
+              <IconButton
+                onClick={toggleDrawer(true)}
+                sx={{
+                  height: '60px',
+                  width: '60px',
+                  borderRadius: 0,
+                  bgcolor: '#f3f4f6',
+                  '&:hover': {
+                    bgcolor: '#e5e7eb',
+                  },
+                }}
+              >
+                <FilterListIcon />
+              </IconButton>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Mobile Filter Drawer */}
-      <Drawer
-        anchor="right"
-        open={drawerOpen}
-        onClose={toggleDrawer(false)}
-        sx={{
-          '& .MuiDrawer-paper': {
-            width: 300,
-            maxWidth: '80vw',
-          },
-        }}
-      >
-        <FilterComponent />
-      </Drawer>
+        {/* Mobile Filter Drawer */}
+        <Drawer
+          anchor="right"
+          open={drawerOpen}
+          onClose={toggleDrawer(false)}
+          sx={{
+            '& .MuiDrawer-paper': {
+              width: 300,
+              maxWidth: '80vw',
+            },
+          }}
+        >
+          <FilterComponent />
+        </Drawer>
 
-      {/* Results Count */}
-      {/* <Box sx={{ textAlign: 'center', mt: 2, px: 4 }}>
+        {/* Results Count */}
+        {/* <Box sx={{ textAlign: 'center', mt: 2, px: 4 }}>
         <Typography variant="body2" color="text.secondary">
           {filteredTours.length} tour{filteredTours.length !== 1 ? 's' : ''} found
         </Typography>
       </Box> */}
 
-      {/* Tour Cards */}
-      <div className="container">
-        {/* Desktop Filter Section */}
-        {!isMobile && (
-          <div className="flex justify-between items-start mb-4">
-            <div></div> {/* Optional left side (can add a heading) */}
-            <div className="w-full md:w-auto">
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <FilterComponent />
-              </Box>
+        {/* Tour Cards */}
+        <div className="container">
+          {/* Desktop Filter Section */}
+          {!isMobile && (
+            <div className="flex justify-between items-start mb-4">
+              <div></div> {/* Optional left side (can add a heading) */}
+              <div className="w-full md:w-auto">
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <FilterComponent />
+                </Box>
+              </div>
             </div>
+          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+            {filteredTours.map((tour, index) => (
+              <CardTour
+                key={tour.id}
+                tour={tour}
+                index={index}
+                cardVariants={cardVariants}
+                cardHover={cardHover}
+                imageVariants={imageVariants}
+                imageHover={imageHover}
+                contentVariants={contentVariants}
+              />
+            ))}
           </div>
-        )}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-          {filteredTours.map((tour, index) => (
-            <CardTour
-              key={tour.id}
-              tour={tour}
-              index={index}
-              cardVariants={cardVariants}
-              cardHover={cardHover}
-              imageVariants={imageVariants}
-              imageHover={imageHover}
-              contentVariants={contentVariants}
-            />
-          ))}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

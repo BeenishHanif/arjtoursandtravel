@@ -3,12 +3,13 @@ import image1 from '/public/images/img-about.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
 import Services from '../../components/Services';
+import { Helmet } from 'react-helmet-async';
 
 const About = () => {
   // Header animation variants
   const headerVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50
     },
     visible: {
@@ -35,8 +36,8 @@ const About = () => {
 
   // Card animation variants
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 60,
       scale: 0.9
     },
@@ -53,7 +54,7 @@ const About = () => {
 
   // Image animation variants
   const imageVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scale: 1.1
     },
@@ -94,8 +95,8 @@ const About = () => {
 
   // Paragraph animation variants
   const paragraphVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 30,
       filter: "blur(4px)"
     },
@@ -113,7 +114,7 @@ const About = () => {
 
   // Main section variants
   const sectionVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scale: 0.95
     },
@@ -130,7 +131,7 @@ const About = () => {
 
   // Services section variants
   const servicesVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       y: 100
     },
@@ -147,7 +148,7 @@ const About = () => {
 
   // Background animation variants
   const backgroundVariants = {
-    hidden: { 
+    hidden: {
       backgroundColor: "rgba(243, 244, 246, 0)",
       backdropFilter: "blur(0px)"
     },
@@ -162,12 +163,21 @@ const About = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <>
+      <Helmet>
+        <title>About Us | Arj Travel and Tours</title>
+        <meta
+          name="description"
+          content="Learn about Arj Travel and Tours - your trusted travel partner offering the best tour experiences in Pakistan and beyond."
+        />
+      </Helmet>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <Slide
           image={image1}
           heading="About Us"
@@ -176,74 +186,75 @@ const About = () => {
           buttonText="Learn More"
           link='/about-us'
         />
-      {/* Main Content Section */}
-      <motion.div 
-        className="flex w-full flex-col bg-gray-100 py-16"
-        variants={backgroundVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.div 
-          className='container justify-center flex w-full flex-col items-center'
-          variants={sectionVariants}
+        {/* Main Content Section */}
+        <motion.div
+          className="flex w-full flex-col bg-gray-100 py-16"
+          variants={backgroundVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Animated Title */}
-          <motion.h1 
-            className="title mb-8"
-            variants={headerVariants}
-            whileTap={{ scale: 0.98 }}
-          >
-            Best Tour Company in Pakistan!
-          </motion.h1>
-
-          {/* Animated Paragraph */}
           <motion.div
-            variants={paragraphVariants}
-            className="max-w-4xl mx-auto"
+            className='container justify-center flex w-full flex-col items-center'
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
-            <motion.p 
-              className="text-sm font-inter text-center text-gray-700 leading-relaxed"
+            {/* Animated Title */}
+            <motion.h1
+              className="title mb-8"
+              variants={headerVariants}
+              whileTap={{ scale: 0.98 }}
             >
-              <motion.span
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
+              Best Tour Company in Pakistan!
+            </motion.h1>
+
+            {/* Animated Paragraph */}
+            <motion.div
+              variants={paragraphVariants}
+              className="max-w-4xl mx-auto"
+            >
+              <motion.p
+                className="text-sm font-inter text-center text-gray-700 leading-relaxed"
               >
-                At ARJ Travel and Tours, we specialize in crafting unforgettable journeys tailored to your dreams and desires.
-                With years of experience in the travel industry, we offer a wide range of domestic and international travel packages
-                that cater to families, solo travelers, business professionals, and groups alike. Whether you're planning a spiritual
-                pilgrimage such as Umrah or Hajj, an exotic vacation to serene landscapes, or a cultural exploration of vibrant cities,
-                we are committed to delivering experiences that go beyond expectations.
-              </motion.span>
-              <br /><br />
-              <motion.span
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-              >
-                Our dedicated team of travel experts works closely with you to understand your preferences, budget, and timing, ensuring
-                every detail of your trip is perfectly managed — from visa processing and airline bookings to hotel accommodations and guided tours.
-                With strong partnerships across airlines, hotels, and local operators worldwide, we guarantee competitive rates, seamless coordination,
-                and 24/7 support throughout your journey.
-              </motion.span>
-            </motion.p>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  At ARJ Travel and Tours, we specialize in crafting unforgettable journeys tailored to your dreams and desires.
+                  With years of experience in the travel industry, we offer a wide range of domestic and international travel packages
+                  that cater to families, solo travelers, business professionals, and groups alike. Whether you're planning a spiritual
+                  pilgrimage such as Umrah or Hajj, an exotic vacation to serene landscapes, or a cultural exploration of vibrant cities,
+                  we are committed to delivering experiences that go beyond expectations.
+                </motion.span>
+                <br /><br />
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  Our dedicated team of travel experts works closely with you to understand your preferences, budget, and timing, ensuring
+                  every detail of your trip is perfectly managed — from visa processing and airline bookings to hotel accommodations and guided tours.
+                  With strong partnerships across airlines, hotels, and local operators worldwide, we guarantee competitive rates, seamless coordination,
+                  and 24/7 support throughout your journey.
+                </motion.span>
+              </motion.p>
+            </motion.div>
+
           </motion.div>
-
         </motion.div>
-      </motion.div>
 
-<div className='container'>
+        <div className='container'>
           <Services />
         </div>
 
-     
-    </motion.div>
+
+      </motion.div>
+    </>
   )
 }
 
