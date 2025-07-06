@@ -19,7 +19,8 @@ import {
   useMediaQuery,
   useTheme,
   Chip,
-  Divider
+  Divider,
+  Pagination
 } from '@mui/material';
 import {
   Search as SearchIcon,
@@ -341,6 +342,18 @@ const UmrahHajjTour = () => {
     </Box>
   );
 
+    const [currentPage, setCurrentPage] = useState(1);
+  const toursPerPage = 6;
+
+  const indexOfLastTour = currentPage * toursPerPage;
+  const indexOfFirstTour = indexOfLastTour - toursPerPage;
+  const currentTours = filteredTours.slice(indexOfFirstTour, indexOfLastTour);
+
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   return (
     <>
       <Helmet>
@@ -449,19 +462,12 @@ const UmrahHajjTour = () => {
           <FilterComponent />
         </Drawer>
 
-        {/* Results Count */}
-        {/* <Box sx={{ textAlign: 'center', mt: 2, px: 4 }}>
-        <Typography variant="body2" color="text.secondary">
-          {filteredTours.length} tour{filteredTours.length !== 1 ? 's' : ''} found
-        </Typography>
-      </Box> */}
-
         {/* Tour Cards */}
         <div className="container">
           {/* Desktop Filter Section */}
           {!isMobile && (
             <div className="flex justify-between items-start mb-4">
-              <div></div> {/* Optional left side (can add a heading) */}
+              <div></div>
               <div className="w-full md:w-auto">
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   <FilterComponent />
@@ -469,20 +475,30 @@ const UmrahHajjTour = () => {
               </div>
             </div>
           )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-            {filteredTours.map((tour, index) => (
+            {currentTours.map((tour, index) => (
               <CardTour
                 key={tour.id}
                 tour={tour}
-                index={index}
-                cardVariants={cardVariants}
-                cardHover={cardHover}
-                imageVariants={imageVariants}
-                imageHover={imageHover}
-                contentVariants={contentVariants}
+                index={indexOfFirstTour + index}
               />
             ))}
           </div>
+
+          {/* Pagination Controls */}
+          {filteredTours.length > toursPerPage && (
+            <div className="flex justify-center mt-8 pb-12">
+              <Pagination
+                count={Math.ceil(filteredTours.length / toursPerPage)}
+                page={currentPage}
+                onChange={(e, value) => setCurrentPage(value)}
+                color="primary"
+                shape="rounded"
+                size="large"
+              />
+            </div>
+          )}
         </div>
       </motion.div>
     </>

@@ -19,7 +19,8 @@ import {
   useMediaQuery,
   useTheme,
   Chip,
-  Divider
+  Divider,
+  Pagination
 } from '@mui/material';
 import {
   Search as SearchIcon,
@@ -341,155 +342,170 @@ const DomesticTour = () => {
     </Box>
   );
 
+   const [currentPage, setCurrentPage] = useState(1);
+  const toursPerPage = 6;
+
+  const indexOfLastTour = currentPage * toursPerPage;
+  const indexOfFirstTour = indexOfLastTour - toursPerPage;
+  const currentTours = filteredTours.slice(indexOfFirstTour, indexOfLastTour);
+
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   return (
     <>
+      <Helmet>
+        <title>Domestic Tours | Arj Travel and Tours</title>
+        <meta name="description" content="Explore the beauty of Pakistan with our specially crafted domestic tour packages. From valleys to cities, travel with comfort and ease." />
+        <meta name="keywords" content="Pakistan Tours, Domestic Tours, Northern Areas, Murree, Skardu, Hunza, Arj Travel" />
+      </Helmet>
 
-<Helmet>
-  <title>Domestic Tours | Arj Travel and Tours</title>
-  <meta name="description" content="Explore the beauty of Pakistan with our specially crafted domestic tour packages. From valleys to cities, travel with comfort and ease." />
-  <meta name="keywords" content="Pakistan Tours, Domestic Tours, Northern Areas, Murree, Skardu, Hunza, Arj Travel" />
-</Helmet>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Slide Section */}
+        <Slide
+          image={image3}
+          heading="Domestic Tours"
+          subheading="Discover the Beauty of Pakistan"
+          description="Explore the breathtaking landscapes and cultural heritage of Pakistan with our comfortable domestic tour packages."
+        />
 
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {/* Slide Section */}
-      <Slide
-        image={image3}
-        heading="Domestic Tours"
-        subheading="Discover the Beauty of Pakistan"
-        description="Explore the breathtaking landscapes and cultural heritage of Pakistan with our comfortable domestic tour packages."
-      />
-
-      {/* Search Bar with Filter Button */}
-      <div className="w-full flex justify-center -mt-10 px-4 z-10 relative">
-        <div className="flex items-center w-full max-w-4xl bg-white rounded-[20px] shadow overflow-hidden">
-          <TextField
-            variant="outlined"
-            placeholder="Destination"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            fullWidth
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleSearchClick();
-              }
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon color="action" />
-                </InputAdornment>
-              ),
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                border: 'none',
-                height: 60,
-                borderRadius: 0,
-                pl: 2,
-              },
-              '& fieldset': {
-                border: 'none',
-              },
-            }}
-          />
-
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              height: '60px',
-              borderRadius: 0,
-              px: 4,
-              textTransform: 'none',
-              bgcolor: '#3b82f6',
-              fontSize: '15px',
-              '&:hover': {
-                bgcolor: '#2563eb',
-              },
-            }}
-            onClick={handleSearchClick}
-          >
-            Search
-          </Button>
-
-          {isMobile && (
-            <IconButton
-              onClick={toggleDrawer(true)}
+        {/* Search Bar with Filter Button */}
+        <div className="w-full flex justify-center -mt-10 px-4 z-10 relative">
+          <div className="flex items-center w-full max-w-4xl bg-white rounded-[20px] shadow overflow-hidden">
+            <TextField
+              variant="outlined"
+              placeholder="Destination"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              fullWidth
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearchClick();
+                }
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon color="action" />
+                  </InputAdornment>
+                ),
+              }}
               sx={{
-                height: '60px',
-                width: '60px',
-                borderRadius: 0,
-                bgcolor: '#f3f4f6',
-                '&:hover': {
-                  bgcolor: '#e5e7eb',
+                '& .MuiOutlinedInput-root': {
+                  border: 'none',
+                  height: 60,
+                  borderRadius: 0,
+                  pl: 2,
+                },
+                '& fieldset': {
+                  border: 'none',
                 },
               }}
+            />
+
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{
+                height: '60px',
+                borderRadius: 0,
+                px: 4,
+                textTransform: 'none',
+                bgcolor: '#3b82f6',
+                fontSize: '15px',
+                '&:hover': {
+                  bgcolor: '#2563eb',
+                },
+              }}
+              onClick={handleSearchClick}
             >
-              <FilterListIcon />
-            </IconButton>
+              Search
+            </Button>
+
+            {isMobile && (
+              <IconButton
+                onClick={toggleDrawer(true)}
+                sx={{
+                  height: '60px',
+                  width: '60px',
+                  borderRadius: 0,
+                  bgcolor: '#f3f4f6',
+                  '&:hover': {
+                    bgcolor: '#e5e7eb',
+                  },
+                }}
+              >
+                <FilterListIcon />
+              </IconButton>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile Filter Drawer */}
+        <Drawer
+          anchor="right"
+          open={drawerOpen}
+          onClose={toggleDrawer(false)}
+          sx={{
+            '& .MuiDrawer-paper': {
+              width: 300,
+              maxWidth: '80vw',
+            },
+          }}
+        >
+          <FilterComponent />
+        </Drawer>
+
+        {/* Tour Cards */}
+        <div className="container">
+          {/* Desktop Filter Section */}
+          {!isMobile && (
+            <div className="flex justify-between items-start mb-4">
+              <div></div>
+              <div className="w-full md:w-auto">
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <FilterComponent />
+                </Box>
+              </div>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+            {currentTours.map((tour, index) => (
+              <CardTour
+                key={tour.id}
+                tour={tour}
+                index={indexOfFirstTour + index}
+              />
+            ))}
+          </div>
+
+          {/* Pagination Controls */}
+          {filteredTours.length > toursPerPage && (
+            <div className="flex justify-center mt-8 pb-12">
+              <Pagination
+                count={Math.ceil(filteredTours.length / toursPerPage)}
+                page={currentPage}
+                onChange={(e, value) => setCurrentPage(value)}
+                color="primary"
+                shape="rounded"
+                size="large"
+              />
+            </div>
           )}
         </div>
-      </div>
-
-      {/* Mobile Filter Drawer */}
-      <Drawer
-        anchor="right"
-        open={drawerOpen}
-        onClose={toggleDrawer(false)}
-        sx={{
-          '& .MuiDrawer-paper': {
-            width: 300,
-            maxWidth: '80vw',
-          },
-        }}
-      >
-        <FilterComponent />
-      </Drawer>
-
-      {/* Results Count */}
-      {/* <Box sx={{ textAlign: 'center', mt: 2, px: 4 }}>
-        <Typography variant="body2" color="text.secondary">
-          {filteredTours.length} tour{filteredTours.length !== 1 ? 's' : ''} found
-        </Typography>
-      </Box> */}
-
-      {/* Tour Cards */}
-      <div className="container">
-        {/* Desktop Filter Section */}
-        {!isMobile && (
-          <div className="flex justify-between items-start mb-4">
-            <div></div> {/* Optional left side (can add a heading) */}
-            <div className="w-full md:w-auto">
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <FilterComponent />
-              </Box>
-            </div>
-          </div>
-        )}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-          {filteredTours.map((tour, index) => (
-            <CardTour
-              key={tour.id}
-              tour={tour}
-              index={index}
-              cardVariants={cardVariants}
-              cardHover={cardHover}
-              imageVariants={imageVariants}
-              imageHover={imageHover}
-              contentVariants={contentVariants}
-            />
-          ))}
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
     </>
   );
 };
+
 
 export default DomesticTour;
 

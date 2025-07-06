@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <UmrahHajjTour />
       },
        {
-        path: "/tour/:id" ,
+        path: "/tours/:type/:id" ,
         element: <TourDetail />
       },
         {
