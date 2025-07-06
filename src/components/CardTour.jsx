@@ -62,7 +62,7 @@ const CardTour = ({ tour, index, cardVariants, cardHover, imageVariants, content
 
         {/* Duration & Price */}
         <motion.div
-          className="flex justify-between items-center pt-2 border-t mt-3"
+          className="flex justify-between items-center pt-2 mt-3"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
@@ -80,13 +80,13 @@ const CardTour = ({ tour, index, cardVariants, cardHover, imageVariants, content
           </motion.div>
 
           {/* Price */}
-          <motion.div
+          {/* <motion.div
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             className="text-right text-sm text-gray-700"
           >
             <span className="text-gray-400">from </span>
             <span className="font-bold text-blue-800">{tour.price}</span>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </motion.div>
     </motion.div>
