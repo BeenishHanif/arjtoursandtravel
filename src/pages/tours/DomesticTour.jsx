@@ -221,62 +221,99 @@ const DomesticTour = () => {
         subheading="Discover the Beauty of Pakistan"
         description="Explore the breathtaking landscapes and cultural heritage of Pakistan with our comfortable domestic tour packages."
       />
+{/* Premium Search Bar with Enhanced Visuals */}
+<div className="w-full flex justify-center -mt-10 px-4 z-10 relative">
+  <div className="flex items-center w-full max-w-4xl bg-white rounded-[20px] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100/30">
+    <TextField
+      variant="outlined"
+      placeholder="Discover your dream destination..."
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      fullWidth
+      onKeyDown={(e) => e.key === 'Enter' && handleSearchClick()}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon 
+              sx={{ 
+                color: '#3B82F6', 
+                fontSize: '28px',
+                transition: 'all 0.3s ease-out',
+                '&:hover': { 
+                  transform: 'scale(1.15) rotate(-5deg)',
+                  color: '#2563EB'
+                }
+              }} 
+            />
+          </InputAdornment>
+        ),
+        endAdornment: searchTerm && (
+          <InputAdornment position="end">
+            <IconButton onClick={() => setSearchTerm('')}>
+              <CloseIcon sx={{ color: '#9CA3AF', fontSize: '20px' }} />
+            </IconButton>
+          </InputAdornment>
+        ),
+        sx: {
+          fontSize: '17px',
+          '&::placeholder': { 
+            color: '#9CA3AF', 
+            opacity: 0.9,
+            letterSpacing: '0.3px'
+          },
+        },
+      }}
+      sx={{
+        '& .MuiOutlinedInput-root': {
+          height: 68,
+          borderRadius: 0,
+          pl: 3,
+          pr: 2,
+          '&:hover fieldset': { 
+            borderColor: '#E5E7EB',
+            boxShadow: 'inset 0 0 0 1px #3B82F6'
+          },
+          '&.Mui-focused fieldset': { 
+            borderColor: 'transparent',
+            boxShadow: 'inset 0 0 0 2px #3B82F6, 0 0 0 2px rgba(59, 130, 246, 0.2)',
+          },
+        },
+        '& fieldset': { 
+          border: 'none',
+          background: 'rgba(249, 250, 251, 0.7)'
+        },
+      }}
+    />
 
-      {/* Search Bar with Search Button */}
-      <div className="w-full flex justify-center -mt-10 px-4 z-10 relative">
-        <div className="flex items-center w-full max-w-4xl bg-white rounded-[20px] shadow  overflow-hidden">
-          <TextField
-            variant="outlined"
-            placeholder="Destination"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            fullWidth
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleSearchClick();
-              }
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon color="action" />
-                </InputAdornment>
-              ),
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                border: 'none',
-                height: 60,
-                borderRadius: 0,
-                pl: 2,
-              },
-              '& fieldset': {
-                border: 'none',
-              },
-            }}
-          />
-
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              height: '60px',
-              borderRadius: 0,
-              px: 4,
-              textTransform: 'none',
-              bgcolor: '#3b82f6',
-              fontSize: '15px',
-              '&:hover': {
-                bgcolor: '#2563eb',
-              },
-            }}
-            onClick={handleSearchClick}
-          >
-            Search
-          </Button>
-        </div>
-      </div>
-
+    <Button
+      variant="contained"
+      sx={{
+        height: '68px',
+        borderRadius: 0,
+        px: 5,
+        textTransform: 'none',
+        background: 'linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%)',
+        fontSize: '17px',
+        fontWeight: 600,
+        letterSpacing: '0.5px',
+        transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
+        boxShadow: '0 2px 4px rgba(29, 78, 216, 0.15)',
+        '&:hover': {
+          background: 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 100%)',
+          transform: 'translateY(-2px)',
+          boxShadow: '0 6px 12px rgba(37, 99, 235, 0.25)',
+        },
+        '&:active': {
+          transform: 'translateY(0)',
+          boxShadow: '0 2px 4px rgba(29, 78, 216, 0.2)',
+        },
+      }}
+      onClick={handleSearchClick}
+    >
+      Find Tours
+    </Button>
+  </div>
+</div>
       {/* Tour Cards */}
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
