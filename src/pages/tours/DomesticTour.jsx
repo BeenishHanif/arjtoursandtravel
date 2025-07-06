@@ -194,7 +194,6 @@ const cardHover = {
   }
 };
 
-// Image hover animation
 const imageHover = {
   scale: 1.1,
   transition: {

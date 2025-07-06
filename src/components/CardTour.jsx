@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-const CardTour = ({ tour, index, cardVariants, cardHover, imageVariants, imageHover, contentVariants }) => {
+const CardTour = ({ tour, index, cardVariants, cardHover, imageVariants, contentVariants }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -19,7 +19,7 @@ const CardTour = ({ tour, index, cardVariants, cardHover, imageVariants, imageHo
       onClick={handleClick}
     >
       {/* Card Image */}
-      <motion.div className="rounded-xl overflow-hidden" variants={imageVariants} whileHover={imageHover}>
+      <motion.div className="rounded-xl overflow-hidden" variants={imageVariants}>
         <motion.img
           src={tour.image}
           alt={tour.title}
