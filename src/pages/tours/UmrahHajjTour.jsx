@@ -211,9 +211,8 @@ const UmrahHajjTour = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [priceSort, setPriceSort] = useState('');
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [currentPage, setCurrentPage] = useState(1);
+  const toursPerPage = 6;
 
   // Filter and sort tours
   const filteredTours = useMemo(() => {
@@ -245,6 +244,18 @@ const UmrahHajjTour = () => {
 
     return filtered;
   }, [searchQuery, priceSort]);
+
+  const indexOfLastTour = currentPage * toursPerPage;
+  const indexOfFirstTour = indexOfLastTour - toursPerPage;
+  const currentTours = filteredTours.slice(indexOfFirstTour, indexOfLastTour);
+
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleSearchClick = () => {
     setSearchQuery(searchTerm);
@@ -284,7 +295,7 @@ const UmrahHajjTour = () => {
         )}
       </Box>
 
-      <FormControl fullWidth size="small" sx={{ width: isMobile ? '100%' : 200 }}>
+      <FormControl fullWidth size="small" sx={{ width: isMobile ? '100%' : 200, marginTop: isMobile ? 5 : 0 }}>
         <InputLabel id="filter-label">Filter</InputLabel>
         <Select
           labelId="filter-label"
@@ -342,18 +353,6 @@ const UmrahHajjTour = () => {
     </Box>
   );
 
-    const [currentPage, setCurrentPage] = useState(1);
-  const toursPerPage = 6;
-
-  const indexOfLastTour = currentPage * toursPerPage;
-  const indexOfFirstTour = indexOfLastTour - toursPerPage;
-  const currentTours = filteredTours.slice(indexOfFirstTour, indexOfLastTour);
-
-  // Scroll to top when page changes
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage]);
-
   return (
     <>
       <Helmet>
@@ -390,11 +389,11 @@ const UmrahHajjTour = () => {
                 }
               }}
               InputProps={{
-                startAdornment: (
+                startAdornment: !isMobile ? (
                   <InputAdornment position="start">
                     <SearchIcon color="action" />
                   </InputAdornment>
-                ),
+                ) : null,
               }}
               sx={{
                 '& .MuiOutlinedInput-root': {
@@ -415,18 +414,20 @@ const UmrahHajjTour = () => {
               sx={{
                 height: '60px',
                 borderRadius: 0,
-                px: 4,
+                px: isMobile ? 2 : 4,
                 textTransform: 'none',
                 bgcolor: '#3b82f6',
                 fontSize: '15px',
+                minWidth: isMobile ? 'auto' : '64px',
                 '&:hover': {
                   bgcolor: '#2563eb',
                 },
               }}
               onClick={handleSearchClick}
             >
-              Search
+              {isMobile ? <SearchIcon /> : 'Search'}
             </Button>
+
 
             {isMobile && (
               <IconButton
@@ -453,9 +454,11 @@ const UmrahHajjTour = () => {
           open={drawerOpen}
           onClose={toggleDrawer(false)}
           sx={{
-            '& .MuiDrawer-paper': {
+            display: { bgcolor: "#f9f8f8" },
+            "& .MuiDrawer-paper": {
               width: 300,
               maxWidth: '80vw',
+              bgcolor: "#f9F8F8",
             },
           }}
         >
