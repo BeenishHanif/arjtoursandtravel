@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import image1 from '/public/images/slider-three.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
-import { tourData } from '../../assets/data/tours';
+import { domestictour } from '../../assets/data/domestictour';
 import CardTour from '../../components/CardTour';
 import {
   TextField,
@@ -216,7 +216,7 @@ const InternationalTour = () => {
 
   // Filter and sort tours
   const filteredTours = useMemo(() => {
-    let filtered = tourData;
+    let filtered = domestictour;
 
     // Filter by search query
     if (searchQuery) {

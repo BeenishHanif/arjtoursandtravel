@@ -1,4 +1,4 @@
-export const tourData = [
+export const domestictour = [
   {
     id: 1,
     title: "10 Days Tour to Skardu, Deosai, Naran, Astor and Rama",
