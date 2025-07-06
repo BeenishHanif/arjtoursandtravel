@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 const CardTour = ({ tour, index, cardVariants, cardHover, imageVariants, contentVariants }) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate(`/tour/${tour.id}`);
+  const handleClick = (tour) => {
+    navigate(`/tours/domestic/${tour.id}`);
   };
 
   return (

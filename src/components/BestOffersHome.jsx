@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { domestictour } from '../assets/data/domestictour';
 
 const BestOffersHome = () => {
-  
+
 
   // Container animation variants
   const containerVariants = {
@@ -21,8 +21,8 @@ const BestOffersHome = () => {
 
   // Header animation variants
   const headerVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50
     },
     visible: {
@@ -49,8 +49,8 @@ const BestOffersHome = () => {
 
   // Card animation variants
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 60,
       scale: 0.9
     },
@@ -67,7 +67,7 @@ const BestOffersHome = () => {
 
   // Image animation variants
   const imageVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scale: 1.1
     },
@@ -116,12 +116,12 @@ const BestOffersHome = () => {
   const navigate = useNavigate();
 
   const handleClick = (tour) => {
-    navigate(`/tour/${tour.id}`);
+    navigate(`/tours/domestic/${tour.id}`);
   };
 
 
   return (
-    <motion.div 
+    <motion.div
       className='w-full !mb-20'
       variants={containerVariants}
       initial="hidden"
@@ -129,21 +129,21 @@ const BestOffersHome = () => {
       viewport={{ once: true, amount: 0.2 }}
     >
       {/* Header Section */}
-      <motion.div 
+      <motion.div
         className="flex w-full flex-col justify-center items-center"
         variants={containerVariants}
       >
-        <motion.h1 
+        <motion.h1
           className="title"
           variants={headerVariants}
-          whileHover={{ 
+          whileHover={{
             scale: 1.05,
             transition: { duration: 0.3 }
           }}
         >
           Best Offers
         </motion.h1>
-        <motion.p 
+        <motion.p
           className="!text-lg font-[700] text-[#535252] md:text-3xl mb-4"
           variants={headerVariants}
         >
@@ -152,7 +152,7 @@ const BestOffersHome = () => {
       </motion.div>
 
       {/* Tour Cards Grid */}
-      <motion.div 
+      <motion.div
         className="grid-offers"
         variants={gridVariants}
       >
@@ -168,7 +168,7 @@ const BestOffersHome = () => {
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
               transition: 'box-shadow 0.3s ease'
             }}
-              onClick={()=>handleClick(tour)}
+            onClick={() => handleClick(tour)}
             onHoverStart={() => {
               // Enhanced shadow on hover via style
             }}
@@ -186,18 +186,18 @@ const BestOffersHome = () => {
             </motion.div>
 
             {/* Card Content */}
-            <motion.div 
+            <motion.div
               className="card-content"
               variants={contentVariants}
             >
               {/* Title */}
-              <motion.h3 
+              <motion.h3
                 className="card-title"
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  delay: 0.2 + index * 0.1, 
-                  duration: 0.5 
+                transition={{
+                  delay: 0.2 + index * 0.1,
+                  duration: 0.5
                 }}
                 viewport={{ once: true }}
               >
@@ -221,20 +221,20 @@ const BestOffersHome = () => {
               </motion.div> */}
 
               {/* Footer Section */}
-              <motion.div 
+              <motion.div
                 className="footer-offers"
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  delay: 0.4 + index * 0.1, 
-                  duration: 0.5 
+                transition={{
+                  delay: 0.4 + index * 0.1,
+                  duration: 0.5
                 }}
                 viewport={{ once: true }}
               >
                 {/* Duration */}
-                <motion.div 
+                <motion.div
                   className="duration-section"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     transition: { duration: 0.2 }
                   }}
@@ -243,9 +243,9 @@ const BestOffersHome = () => {
                 </motion.div>
 
                 {/* Price */}
-                <motion.div 
+                <motion.div
                   className="price-section"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     transition: { duration: 0.2 }
                   }}

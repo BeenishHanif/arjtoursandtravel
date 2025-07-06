@@ -1,9 +1,29 @@
 import { useParams } from "react-router-dom";
-import { tourData } from "../../assets/data/tours";
+import { domestictour } from "../../assets/data/domestictour";
+
 
 const TourDetail = () => {
-  const { id } = useParams();
-  const tour = tourData.find((t) => t.id.toString() === id);
+  const { type, id } = useParams();
+
+  // Determine which tour data to use
+  let dataSource = [];
+  switch (type) {
+    case "domestic":
+      dataSource = domestictour;
+      break;
+    case "international":
+      // dataSource = internationalTourData;
+      dataSource = domestictour;
+      break;
+    case "umrahhajj":
+      // dataSource = umrahHajjTourData;
+      dataSource = domestictour;
+      break;
+    default:
+      dataSource = [];
+  }
+
+  const tour = dataSource.find((t) => t.id.toString() === id);
 
   if (!tour) return <div className="text-center mt-10">Tour not found</div>;
 
