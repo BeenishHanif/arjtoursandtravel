@@ -443,11 +443,11 @@ const DomesticTour = () => {
       </Drawer>
 
       {/* Results Count */}
-      <Box sx={{ textAlign: 'center', mt: 2, px: 4 }}>
+      {/* <Box sx={{ textAlign: 'center', mt: 2, px: 4 }}>
         <Typography variant="body2" color="text.secondary">
           {filteredTours.length} tour{filteredTours.length !== 1 ? 's' : ''} found
         </Typography>
-      </Box>
+      </Box> */}
 
       {/* Tour Cards */}
       <div className="container">

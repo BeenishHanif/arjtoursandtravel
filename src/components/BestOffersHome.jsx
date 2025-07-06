@@ -1,70 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import location from "../assets/svg/location.svg"
+import { useNavigate } from 'react-router-dom';
+import { domestictour } from '../assets/data/domestictour';
 
 const BestOffersHome = () => {
-  const tourData = [
-    {
-      id: 1,
-      title: "Maldives & Sri Lanka ~ 7 Days Group Tour",
-      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=250&fit=crop",
-      duration: "7 Days",
-      price: "Rs. 340000",
-      departure: "21st July, 11th and 25th August 2025",
-      rating: 0,
-      hasReview: false
-    },
-    {
-      id: 2,
-      title: "Bali & Singapore with Star Dream Cruise ~ 11 Days Group Tour",
-      image: "https://images.unsplash.com/photo-1544467255-f8d562b45a8b?w=400&h=250&fit=crop",
-      duration: "11 Days",
-      price: "Rs. 580000",
-      departure: "23rd August 2025",
-      rating: 0,
-      hasReview: false
-    },
-    {
-      id: 3,
-      title: "Phuket & Krabi ~ 05 Days Group Tour",
-      image: "https://images.unsplash.com/photo-1539650116574-75c0c6d73273?w=400&h=250&fit=crop",
-      duration: "5 Days",
-      price: "Rs. 245000",
-      departure: "14 August and 28 August 2025",
-      rating: 0,
-      hasReview: false
-    },
-    {
-      id: 4,
-      title: "Turkey ~ 9 Days Group Tour",
-      image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&h=250&fit=crop",
-      duration: "9 Days",
-      price: "Rs. 490000",
-      departure: "08 August and 22 August 2025",
-      rating: 0,
-      hasReview: false
-    },
-    {
-      id: 5,
-      title: "The Grand Europe ~ 09 Days Group Tour",
-      image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=250&fit=crop",
-      duration: "9 Days",
-      price: "Rs. 590000",
-      departure: "07 August 2025",
-      rating: 0,
-      hasReview: false
-    },
-    {
-      id: 6,
-      title: "Magical Bali ~ 07 Days Group Tour",
-      image: "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=400&h=250&fit=crop",
-      duration: "7 Days",
-      price: "Rs. 340000",
-      departure: "04 July 2025 and 09 August 2025",
-      rating: 0,
-      hasReview: false
-    }
-  ];
+  
 
   // Container animation variants
   const containerVariants = {
@@ -172,6 +113,13 @@ const BestOffersHome = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleClick = (tour) => {
+    navigate(`/tour/${tour.id}`);
+  };
+
+
   return (
     <motion.div 
       className='w-full !mb-20'
@@ -208,7 +156,7 @@ const BestOffersHome = () => {
         className="grid-offers"
         variants={gridVariants}
       >
-        {tourData.map((tour, index) => (
+        {domestictour.map((tour, index) => (
           <motion.div
             key={tour.id}
             className="card"
@@ -220,6 +168,7 @@ const BestOffersHome = () => {
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
               transition: 'box-shadow 0.3s ease'
             }}
+              onClick={()=>handleClick(tour)}
             onHoverStart={() => {
               // Enhanced shadow on hover via style
             }}
@@ -256,7 +205,7 @@ const BestOffersHome = () => {
               </motion.h3>
 
               {/* Departure Info */}
-              <motion.div 
+              {/* <motion.div 
                 className="departure-info"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -269,7 +218,7 @@ const BestOffersHome = () => {
                 <span className="departure-text">
                   Departure Dates: {tour.departure}
                 </span>
-              </motion.div>
+              </motion.div> */}
 
               {/* Footer Section */}
               <motion.div 
@@ -301,14 +250,14 @@ const BestOffersHome = () => {
                     transition: { duration: 0.2 }
                   }}
                 >
-                  <motion.span 
+                  {/* <motion.span 
                     className="price-from"
                     initial={{ opacity: 0.7 }}
                     whileHover={{ opacity: 1 }}
                   >
                     from
-                  </motion.span>
-                  <motion.span 
+                  </motion.span> */}
+                  {/* <motion.span 
                     className="price-amount"
                     whileHover={{ 
                       color: '#023f82',
@@ -316,7 +265,7 @@ const BestOffersHome = () => {
                     }}
                   >
                     {tour.price}
-                  </motion.span>
+                  </motion.span> */}
                 </motion.div>
               </motion.div>
             </motion.div>
