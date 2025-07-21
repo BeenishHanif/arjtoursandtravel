@@ -21,7 +21,7 @@ import { domestictour } from '../assets/data/domestictour';
   const headerVariants = {
     hidden: {
       opacity: 0,
-      y: 50
+      y: 20
     },
     visible: {
       opacity: 1,

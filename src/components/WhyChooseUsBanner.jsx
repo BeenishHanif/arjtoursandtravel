@@ -182,7 +182,7 @@ const WhyChooseUsBanner = ({
           variants={containerVariants}
         >
           <motion.h1 
-            className="text-white title-white font-bold "
+            className="text-white title-white px-2 font-bold "
             variants={titleVariants}
             whileHover={{ 
               scale: 1.05,

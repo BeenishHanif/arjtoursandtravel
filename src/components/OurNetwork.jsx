@@ -67,7 +67,7 @@ const OurNetwork = () => {
           className="w-full lg:w-1/2 py-8 flex flex-col p-4"
         >
           <div className="flex flex-col gap-3 h-full">
-            <p className="!text-lg font-[700] text-[#535252] md:text-3xl  mb-4">
+            <p className="!text-lg font-[700] text-[#535252] md:text-3xl  lg:mb-4 mb-2">
               Discover The World With Us
             </p>
 
