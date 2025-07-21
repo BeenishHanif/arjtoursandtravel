@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
-import image2 from '/public/images/mountains.jpg';
+import image2 from '/images/mountains.jpg';
 import { MapPin } from 'lucide-react';
 
-const Contact = () => {
+const Contact = ({onSubmit}) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-  };
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -59,7 +55,7 @@ const Contact = () => {
             <h3 className="subtitle !text-[#023f82] mb-4">We'd love to hear from you</h3>
             <p className=" mb-8">Have a question or want to plan a trip? Fill out the form and we’ll get back to you soon.</p>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={onSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name*</label>
               <input

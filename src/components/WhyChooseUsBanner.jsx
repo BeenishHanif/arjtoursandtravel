@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import image3 from '/public/images/bannerchooseus.jpg';
+import image3 from '/images/bannerchooseus.jpg';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';

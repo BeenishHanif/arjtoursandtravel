@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import image3 from '/public/images/slider-one.jpg'
+import image3 from '/images/slider-one.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
 import { domestictour } from '../../assets/data/domestictour';

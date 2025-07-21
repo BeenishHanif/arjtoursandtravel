@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion"
-import image3 from '/public/images/network.jpg'
+import image3 from '/images/network.jpg'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button } from '@mui/material';
   // Container animation variants

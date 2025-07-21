@@ -3,9 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Slide } from './Slide';
-import image1 from '/public/images/slider-one.jpg'
-import image2 from '/public/images/slider-two.jpg'
-import image3 from '/public/images/slider-three.jpg'
+import image1 from '/images/slider-one.jpg'
+import image2 from '/images/slider-two.jpg'
+import image3 from '/images/slider-three.jpg'
 
 
 const SliderHome = () => {
