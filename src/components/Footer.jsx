@@ -117,7 +117,7 @@ const Footer = () => {
           </h2>
           <div className="flex !pt-2 !space-x-4">
             <a
-              href="https://www.facebook.com"
+              href="https://www.facebook.com/share/16Qvq3xScA/"
               className="group"
               target="_blank"
               rel="noopener noreferrer"
@@ -141,7 +141,7 @@ const Footer = () => {
               />
             </a>
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/arjtravelsandtourism?utm_source=qr&igsh=MWg5N3poNjhndHJzcg=="
               className="group"
               target="_blank"
               rel="noopener noreferrer"
