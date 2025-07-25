@@ -2,7 +2,7 @@ export const domestictour = [
     {
     id: 1,
     title: "10 Days Tour to Skardu, Deosai, Naran, Astor and Rama",
-    image: "/images/1.jpg",
+    image: "15_veu1zp",
     duration: "10 Days",
     price: "",
     departure: "",
@@ -23,7 +23,7 @@ export const domestictour = [
   {
     id: 2,
     title: "8 Days Tour to Gilgit, Hunza & Khunjerab",
-    image: "/images/2.jpg",
+    image: "6_bnfedb",
     duration: "8 Days",
     price: "",
     departure: "",
@@ -42,7 +42,7 @@ export const domestictour = [
   {
     id: 3,
     title: "7 Days Tour to Naran, Astor and Rama",
-    image: "/images/3.jpg",
+    image: "10_equur6",
     duration: "7 Days",
     price: "",
     departure: "",
@@ -60,7 +60,7 @@ export const domestictour = [
   {
     id: 4,
     title: "6 Days Tour to Chitral, Kalash",
-    image: "/images/4.jpg",
+    image: "17_vgnee6",
     duration: "6 Days",
     price: "",
     departure: "",
@@ -77,7 +77,7 @@ export const domestictour = [
   {
     id: 5,
     title: "6 Days Tour to Kashmir",
-    image: "/images/5.jpg",
+    image: "16_oams54",
     duration: "6 Days",
     price: "",
     departure: "",
@@ -94,7 +94,7 @@ export const domestictour = [
   {
     id: 6,
     title: "6 Days Tour to Multan, Bahawalpur & Fort Monroe",
-    image: "/images/6.jpg",
+    image: "12_dvj4yg",
     duration: "6 Days",
     price: "",
     departure: "",
@@ -111,7 +111,7 @@ export const domestictour = [
   {
     id: 7,
     title: "5 Days Tour to Swat Valley",
-    image: "/images/7.jpg",
+    image: "7_znmr1t",
     duration: "5 Days",
     price: "",
     departure: "",
@@ -127,7 +127,7 @@ export const domestictour = [
   {
     id: 8,
     title: "5 Days Tour to Kaghan Valley",
-    image: "/images/8.jpg",
+    image: "2_hp0ze9",
     duration: "5 Days",
     price: "",
     departure: "",
@@ -143,7 +143,7 @@ export const domestictour = [
   {
     id: 9,
     title: "4 Days Tour to Murree",
-    image: "/images/9.jpg",
+    image: "4_pu7m67",
     duration: "4 Days",
     price: "",
     departure: "",
@@ -158,7 +158,7 @@ export const domestictour = [
   {
     id: 10,
     title: "Skardu Tour Itinerary (6 Days / 5 Nights by Air)",
-    image: "/images/10.jpg",
+    image: "1_s5rjx2",
     duration: "6 Days",
     price: "",
     departure: "",

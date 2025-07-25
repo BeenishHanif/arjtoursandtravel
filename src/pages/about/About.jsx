@@ -1,5 +1,4 @@
 import React from 'react'
-import image1 from '/images/img-about.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
 import Services from '../../components/Services';
@@ -179,7 +178,7 @@ const About = () => {
         transition={{ duration: 0.5 }}
       >
         <Slide
-          image={image1}
+          image='img-about_jj61wn'
           heading="About Us"
           subheading="Our Journey and Values"
           description="Discover our story, mission, and the values that drive us. We are committed to delivering excellence and innovation in everything we do. Learn more about our passion for quality and how we strive to make a difference every day."

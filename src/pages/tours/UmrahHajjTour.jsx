@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import image2 from '/images/slider-two.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
 import { domestictour } from '../../assets/data/domestictour';
@@ -368,7 +367,7 @@ const UmrahHajjTour = () => {
       >
         {/* Slide Section */}
         <Slide
-          image={image2}
+          image='slider-two_w7alsi'
           heading="Hajj & Umrah"
           subheading="Spiritual Journeys with Care"
           description="Experience a spiritually fulfilling Hajj and Umrah with our trusted and well-organized pilgrimage packages."

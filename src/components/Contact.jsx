@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
-import image2 from '/images/mountains.jpg';
 import { MapPin } from 'lucide-react';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 
-const Contact = ({onSubmit}) => {
+
+const Contact = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
+
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dqqt4usxi', // replace with your Cloudinary cloud name
+    },
+  });
+
+  const cldImage = cld
+    .image('mountains_uewtqd')
+    .format('auto')
+    .quality('auto')
+    .resize(fill().width(1200).height(600).gravity(autoGravity())); // adjust size as needed
 
 
 
@@ -21,11 +37,12 @@ const Contact = ({onSubmit}) => {
 
         {/* Left Side - Image & Info */}
         <div className="relative w-full h-full rounded-2xl overflow-hidden shadow flex">
-          <img
-            src={image2}
-            alt="ARJ Office"
+          <AdvancedImage
+            cldImg={cldImage}
             className="w-full object-cover"
+            alt="ARJ Office"
           />
+
           <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)] bg-opacity-60 p-6 flex flex-col justify-end text-white">
             <h2 className="text-2xl font-bold mb-2">ARJ TRAVEL AND TOURS</h2>
             <p className="text-sm">

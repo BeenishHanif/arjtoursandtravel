@@ -3,38 +3,42 @@ import { motion } from 'framer-motion'
 import location from "../assets/svg/location.svg"
 import { useNavigate } from 'react-router-dom';
 import { domestictour } from '../assets/data/domestictour';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 
 
-  // Container animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.15
-      }
+// Container animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      staggerChildren: 0.15
     }
-  };
+  }
+};
 
-  // Header animation variants
-  const headerVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
+// Header animation variants
+const headerVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
     }
-  };
+  }
+};
 
-  
-  
+
+
 const BestOffersHome = () => {
   const [loaded, setLoaded] = useState(false);
   const navigate = useNavigate();
@@ -42,6 +46,13 @@ const BestOffersHome = () => {
   const handleClick = (tour) => {
     navigate(`/tours/domestic/${tour.id}`);
   };
+
+  // Setup Cloudinary once per component or file
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dqqt4usxi', // Replace with your actual cloud name
+    },
+  });
 
   return (
     <motion.div
@@ -57,7 +68,7 @@ const BestOffersHome = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-       <motion.h1
+        <motion.h1
           className="title"
           variants={headerVariants}
           whileHover={{
@@ -82,6 +93,13 @@ const BestOffersHome = () => {
         animate="visible"
       >
         {domestictour.slice(0, 9).map((tour, index) => {
+          // Create and transform the image
+          const img = cld
+            .image(tour.image) // tour.image should be public ID like '15_veu1zp'
+            .format('auto')
+            .quality('auto')
+            .resize(fill().width(600).height(208).gravity(autoGravity())); // 208px = ~h-52
+
 
           return (
             <motion.div
@@ -98,15 +116,13 @@ const BestOffersHome = () => {
                 {!loaded && (
                   <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-xl" />
                 )}
-                <img
-                  src={tour.image}
-                  alt={tour.title}
-                  loading="lazy"
+                <AdvancedImage
+                  cldImg={img}
                   onLoad={() => setLoaded(true)}
-                  className={`w-full h-full object-cover rounded-xl transition-transform duration-300 ${
-                    loaded ? "opacity-100" : "opacity-0"
-                  } group-hover:scale-105`}
+                  className={`w-full h-full object-cover rounded-xl transition-transform duration-300 ${loaded ? "opacity-100" : "opacity-0"
+                    } group-hover:scale-105`}
                 />
+
               </div>
 
               {/* Text Content */}
@@ -150,7 +166,7 @@ const BestOffersHome = () => {
                   >
                     {tour.price}
                   </motion.span> */}
-                {/* </motion.div>  */}
+                  {/* </motion.div>  */}
                 </div>
               </div>
             </motion.div>

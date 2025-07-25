@@ -3,9 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Slide } from './Slide';
-import image1 from '/images/slider-one.jpg'
-import image2 from '/images/slider-two.jpg'
-import image3 from '/images/slider-three.jpg'
 
 
 const SliderHome = () => {
@@ -24,7 +21,7 @@ const SliderHome = () => {
     <div className="w-full h-auto">
       <Slider {...settings}>
         <Slide
-          image={image1}
+          image='slider-one_o4zvsu'
           heading="Explore Pakistan"
           subheading="Customized Northern Areas Tours"
           description="Discover the breathtaking beauty of Hunza, Skardu, Swat & Murree with our guided and custom travel packages."
@@ -32,7 +29,7 @@ const SliderHome = () => {
           link="/pakistan-tours"
         />
         <Slide
-          image={image2}
+          image='slider-two_w7alsi'
           heading="Spiritual Journey"
           subheading="Affordable Umrah Packages"
           description="Let us assist you in fulfilling your spiritual journey with our well-planned and budget-friendly Umrah packages."
@@ -40,7 +37,7 @@ const SliderHome = () => {
           link="/umrah"
         />
         <Slide
-          image={image3}
+          image='slider-three_acc1bt'
           heading="Global Destinations"
           subheading="International Tour Offers"
           description="Travel the world with ease. Enjoy amazing deals on international tours including Dubai, Turkey, Malaysia & more."

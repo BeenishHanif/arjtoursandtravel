@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import image3 from '/images/slider-one.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
 import { domestictour } from '../../assets/data/domestictour';
@@ -370,7 +369,7 @@ const DomesticTour = () => {
       >
         {/* Slide Section */}
         <Slide
-          image={image3}
+          image='slider-one_o4zvsu'
           heading="Domestic Tours"
           subheading="Discover the Beauty of Pakistan"
           description="Explore the breathtaking landscapes and cultural heritage of Pakistan with our comfortable domestic tour packages."

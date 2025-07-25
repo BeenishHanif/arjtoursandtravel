@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import image1 from '/images/slider-three.jpg'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
 import { domestictour } from '../../assets/data/domestictour';
@@ -370,7 +369,7 @@ const InternationalTour = () => {
       >
         {/* Slide Section */}
         <Slide
-          image={image1}
+          image='slider-three_acc1bt'
           heading="International Tours"
           subheading="Explore the World with Us"
           description="Embark on unforgettable international journeys with our expertly curated tour packages."
