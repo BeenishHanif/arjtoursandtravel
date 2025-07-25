@@ -1,50 +1,66 @@
 
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion"
-import image3 from '/images/network.jpg'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button } from '@mui/material';
-  // Container animation variants
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.2
-      }
-    }
-  };
+// Container animation variants
 
-  const textVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      staggerChildren: 0.2
     }
-  };
+  }
+};
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+};
 
 const OurNetwork = () => {
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dqqt4usxi', // your cloud name
+    },
+  });
+
+  const cldImage3 = cld
+    .image('network_ml9lv8') 
+    .format('auto')
+    .quality('auto')
+    .resize(fill().width(1200).height(800).gravity(autoGravity())); // adjust sizes
+
   return (
     <>
-     <motion.div 
+      <motion.div
         className="flex w-full flex-col justify-center items-center"
-         variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
-        <motion.h1 
+        <motion.h1
           className="title"
-           variants={textVariants}
+          variants={textVariants}
         >
           Our Network
         </motion.h1>
@@ -56,7 +72,12 @@ const OurNetwork = () => {
           transition={{ duration: 0.6, type: 'tween' }}
           className="flex relative justify-center items-center w-full lg:w-1/2 p-4"
         >
-          <img className="w-full h-full object-cover" src={image3} alt="ARJ Travel" />
+          <AdvancedImage
+            cldImg={cldImage3}
+            className="w-full h-full object-cover"
+            alt="ARJ Travel"
+          />
+
         </div>
 
         <motion.div
@@ -64,7 +85,7 @@ const OurNetwork = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.1 }}
           exit={{ opacity: 0 }}
-          className="w-full lg:w-1/2 py-8 flex flex-col p-4"
+          className="w-full lg:w-1/2 md:py-8 py-1 flex flex-col px-4"
         >
           <div className="flex flex-col gap-3 h-full">
             <p className="!text-lg font-[700] text-[#535252] md:text-3xl  lg:mb-4 mb-2">

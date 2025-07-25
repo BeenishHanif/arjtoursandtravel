@@ -1,5 +1,9 @@
 import { useParams } from "react-router-dom";
 import { domestictour } from "../../assets/data/domestictour";
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 
 
 const TourDetail = () => {
@@ -23,14 +27,27 @@ const TourDetail = () => {
       dataSource = [];
   }
 
-  const tour = dataSource.find((t) => t.id.toString() === id);
+  const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'dqqt4usxi', // your cloud name
+  },
+});
+
+
+const tour = dataSource.find((t) => t.id.toString() === id);
+
+const image = cld
+   .image(tour.image) // Example: 'my-tours/tour1'
+   .format('auto')
+   .quality('auto')
+   .resize(fill().width(600).height(300).gravity(autoGravity())); // Resize and auto-crop
 
   if (!tour) return <div className="text-center mt-10">Tour not found</div>;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-gray-800 mb-4">{tour.title}</h1>
-      <img src={tour.image} alt={tour.title} className="w-full h-64 object-cover rounded-xl mb-6" />
+        <AdvancedImage cldImg={image} alt={tour.title} className="w-full h-64 object-cover rounded-xl mb-6" />
       <p className="text-gray-700 mb-4">Duration: {tour.duration}</p>
       <p className="text-gray-700 mb-4">Price: {tour.price}</p>
       <p className="text-gray-700 mb-6">Departure Dates: {tour.departure || "To Be Announced"}</p>

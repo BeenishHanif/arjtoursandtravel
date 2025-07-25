@@ -4,6 +4,11 @@ import image3 from '/images/bannerchooseus.jpg';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
+
 
 const WhyChooseUsBanner = ({ 
   title = "Why Choose ARJ Travel and Tours?",
@@ -155,14 +160,27 @@ const WhyChooseUsBanner = ({
     }
   };
 
+  const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'dqqt4usxi',
+  },
+});
+
+const cldImage = cld
+  .image('bannerchooseus_jwjfly') 
+  .format('auto')
+  .quality('auto')
+  .resize(fill().width(1200).height(800).gravity(autoGravity())); // adjust sizes
+
+
   return (
     <div 
-      className="relative mt-20 w-full h-auto "
+      className="relative md:mt-20 mt-10 w-full h-auto "
     >
       {/* Background Image with Animation */}
-      <img 
+      <AdvancedImage 
         className="w-full h-full object-cover absolute inset-0 z-0" 
-        src={image3} 
+        cldImg={cldImage} 
         alt="ARJ Travel Background"
       />
       
