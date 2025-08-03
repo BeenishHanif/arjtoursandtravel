@@ -31,7 +31,7 @@ const ServiceCard = ({ icon: Icon, title, description, index }) => (
       transition={{ type: "spring", stiffness: 300 }}
     >
       <motion.div
-        whileHover={{ rotate: 360 }}
+        whileHover={{ rotate: 90 }}
         transition={{ duration: 0.5 }}
       >
         <Icon className="text-white text-3xl" />

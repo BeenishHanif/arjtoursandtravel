@@ -4,6 +4,7 @@ import OurNetwork from '../../components/OurNetwork';
 import BestOffersHome from '../../components/BestOffersHome';
 import WhyChooseUsBanner from '../../components/WhyChooseUsBanner';
 import ClientReviews from '../../components/ClientReviews';
+import { Helmet } from 'react-helmet-async';
 
 
 const Home = () => {
@@ -18,13 +19,14 @@ const Home = () => {
   
   return (
     <div>
-      {/* <Helmet>
-        <title>Home | Alpha Halal</title>
-        <meta name="description" content="Welcome to the Halal Store. Find a wide range of halal products here." />
-      </Helmet> */}
-      {/* <Modal isOpen={showModal} onClose={toggleModal}>
-        <ChatInfo onClose={toggleModal} />
-      </Modal> */}
+      <Helmet>
+        <title>Home | Arj Travel and Tours</title>
+        <meta
+          name="description"
+          content="Explore breathtaking destinations with Arj Travel and Tours. Domestic and international travel packages available."
+        />
+        <meta name="keywords" content="Travel, Tours, Pakistan, Dubai, Arj Travel, Tourism, Holiday Packages" />
+      </Helmet>
       <SliderHome />
       <div className="flex !mt-3 justify-center items-center">
       <div className="container">

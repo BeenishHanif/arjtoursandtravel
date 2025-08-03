@@ -1,95 +1,66 @@
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+// CardTour.jsx
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 
-const CardTour = ({ tour, index, cardVariants, cardHover, imageVariants, imageHover, contentVariants }) => {
+const CardTour = ({ tour }) => {
   const navigate = useNavigate();
+  const [loaded, setLoaded] = useState(false);
+
+  // Setup Cloudinary instance
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dqqt4usxi', // Replace this!
+    },
+  });
+
+  // Create image with transformations
+  const image = cld
+    .image(tour.image) // Example: 'my-tours/tour1'
+    .format('auto')
+    .quality('auto')
+    .resize(fill().width(600).height(300).gravity(autoGravity())); // Resize and auto-crop
 
   const handleClick = () => {
-    navigate(`/tour/${tour.id}`);
+    navigate(`/tours/domestic/${tour.id}`);
   };
 
   return (
-    <motion.div
-      key={tour.id}
-      className="bg-white rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-lg transition duration-300 p-4"
-      variants={cardVariants}
-      whileHover={cardHover}
-      whileTap={{ scale: 0.98 }}
-      custom={index}
+    <div
       onClick={handleClick}
+      className="bg-white rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-lg transition duration-300 p-4"
     >
-      {/* Card Image */}
-      <motion.div className="rounded-xl overflow-hidden" variants={imageVariants} whileHover={imageHover}>
-        <motion.img
-          src={tour.image}
-          alt={tour.title}
-          className="w-full h-52 object-cover"
-          loading="lazy"
-        />
-      </motion.div>
-
-      {/* Card Content */}
-      <motion.div className="mt-4 space-y-2" variants={contentVariants}>
-        {/* Title */}
-        <motion.h3
-          className="text-lg font-semibold text-gray-800"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.2 + index * 0.1,
-            duration: 0.5
-          }}
-          viewport={{ once: true }}
-        >
-          {tour.title}
-        </motion.h3>
-
-        {/* Departure Info */}
-        {tour.departure && (
-          <motion.p
-            className="text-sm text-gray-500"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{
-              delay: 0.3 + index * 0.1,
-              duration: 0.5
-            }}
-            viewport={{ once: true }}
-          >
-            Departure Dates: <span className="font-medium">{tour.departure}</span>
-          </motion.p>
+      {/* Image */}
+      <div className="rounded-xl overflow-hidden relative w-full h-52 group">
+        {!loaded && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-xl" />
         )}
+        <AdvancedImage
+          cldImg={image}
+          onLoad={() => setLoaded(true)}
+          className={`w-full h-full object-cover rounded-xl transition-transform duration-300 ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          } group-hover:scale-105`}
+        />
+      </div>
 
-        {/* Duration & Price */}
-        <motion.div
-          className="flex justify-between items-center pt-2 border-t mt-3"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.4 + index * 0.1,
-            duration: 0.5
-          }}
-          viewport={{ once: true }}
-        >
-          {/* Duration */}
-          <motion.div
-            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-            className="text-sm text-gray-700"
-          >
-            {tour.duration}
-          </motion.div>
-
-          {/* Price */}
-          <motion.div
-            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-            className="text-right text-sm text-gray-700"
-          >
-            <span className="text-gray-400">from </span>
-            <span className="font-bold text-blue-800">{tour.price}</span>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+      {/* Content */}
+      <div className="mt-4 space-y-2">
+        <h3 className="text-lg font-semibold text-gray-800">{tour.title}</h3>
+        {tour.departure && (
+          <p className="text-sm text-gray-500">
+            Departure Dates:{' '}
+            <span className="font-medium">{tour.departure}</span>
+          </p>
+        )}
+        <div className="flex justify-between items-center pt-2 mt-3 text-sm text-gray-700">
+          {tour.duration}
+        </div>
+      </div>
+    </div>
   );
 };
 
