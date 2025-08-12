@@ -488,7 +488,29 @@ const InternationalTour = () => {
               />
             ))}
           </div>
-
+<motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  At ARJ Travel and Tours, we specialize in crafting unforgettable journeys tailored to your dreams and desires.
+                  With years of experience in the travel industry, we offer a wide range of domestic and international travel packages
+                  that cater to families, solo travelers, business professionals, and groups alike. Whether you're planning a spiritual
+                  pilgrimage such as Umrah or Hajj, an exotic vacation to serene landscapes, or a cultural exploration of vibrant cities,
+                  we are committed to delivering experiences that go beyond expectations.
+                </motion.span><motion.span
+                                  initial={{ opacity: 0 }}
+                                  whileInView={{ opacity: 1 }}
+                                  transition={{ duration: 0.6, delay: 0.1 }}
+                                  viewport={{ once: true }}
+                                >
+                                  At ARJ Travel and Tours, we specialize in crafting unforgettable journeys tailored to your dreams and desires.
+                                  With years of experience in the travel industry, we offer a wide range of domestic and international travel packages
+                                  that cater to families, solo travelers, business professionals, and groups alike. Whether you're planning a spiritual
+                                  pilgrimage such as Umrah or Hajj, an exotic vacation to serene landscapes, or a cultural exploration of vibrant cities,
+                                  we are committed to delivering experiences that go beyond expectations.
+                                </motion.span>
           {/* Pagination Controls */}
           {filteredTours.length > toursPerPage && (
             <div className="flex justify-center mt-8 pb-12">
