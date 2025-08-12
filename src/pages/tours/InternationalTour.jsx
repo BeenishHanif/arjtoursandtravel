@@ -488,7 +488,18 @@ const InternationalTour = () => {
               />
             ))}
           </div>
-
+   {filteredTours.length > toursPerPage && (
+            <div className="flex justify-center mt-8 pb-12">
+              <Pagination
+                count={Math.ceil(filteredTours.length / toursPerPage)}
+                page={currentPage}
+                onChange={(e, value) => setCurrentPage(value)}
+                color="primary"
+                shape="rounded"
+                size="large"
+              />
+            </div>
+          )}
           {/* Pagination Controls */}
           {filteredTours.length > toursPerPage && (
             <div className="flex justify-center mt-8 pb-12">
