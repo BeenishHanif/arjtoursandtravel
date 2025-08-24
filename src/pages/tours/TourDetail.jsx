@@ -4,6 +4,8 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage } from '@cloudinary/react';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
+import { internationaltour } from "../../assets/data/internationaltour";
+import { hajjumrahtour } from "../../assets/data/hajjumrahtour";
 
 
 const TourDetail = () => {
@@ -17,11 +19,11 @@ const TourDetail = () => {
       break;
     case "international":
       // dataSource = internationalTourData;
-      dataSource = domestictour;
+      dataSource = internationaltour;
       break;
     case "umrahhajj":
       // dataSource = umrahHajjTourData;
-      dataSource = domestictour;
+      dataSource = hajjumrahtour;
       break;
     default:
       dataSource = [];

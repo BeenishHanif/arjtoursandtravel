@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { Slide } from '../../components/Slide'
 import { motion } from 'framer-motion'
-import { domestictour } from '../../assets/data/domestictour';
 import CardTour from '../../components/CardTour';
 import {
   TextField,
@@ -28,6 +27,7 @@ import {
   Sort as SortIcon
 } from '@mui/icons-material';
 import { Helmet } from 'react-helmet-async';
+import { hajjumrahtour } from '../../assets/data/hajjumrahtour';
 
 const headerVariants = {
   hidden: {
@@ -215,7 +215,7 @@ const UmrahHajjTour = () => {
 
   // Filter and sort tours
   const filteredTours = useMemo(() => {
-    let filtered = domestictour;
+    let filtered = hajjumrahtour;
 
     // Filter by search query
     if (searchQuery) {
