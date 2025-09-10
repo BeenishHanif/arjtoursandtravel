@@ -129,7 +129,7 @@ const Footer = () => {
               />
             </a>
             <a
-              href="https://wa.me/923333204268"
+              href="https://wa.me/923336940534"
               className="group"
               target="_blank"
               rel="noopener noreferrer"
@@ -141,7 +141,7 @@ const Footer = () => {
               />
             </a>
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/arjtravelsandtourism?igsh"
               className="group"
               target="_blank"
               rel="noopener noreferrer"
