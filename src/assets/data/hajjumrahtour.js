@@ -1,7 +1,4 @@
 export const hajjumrahtour = [
-    
-// src/assets/data/hajjumrahtour.js
-
   {
     id: 1,
     title: "Umrah Package (Sept - Nov) - 15 Days",

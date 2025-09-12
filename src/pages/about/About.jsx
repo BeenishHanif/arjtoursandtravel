@@ -21,76 +21,6 @@ const About = () => {
     }
   };
 
-  // Grid container animation
-  const gridVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  // Card animation variants
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      y: 60,
-      scale: 0.9
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  // Image animation variants
-  const imageVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 1.1
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  // Content animation variants
-  const contentVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: 0.3
-      }
-    }
-  };
-
-  // Container animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.15
-      }
-    }
-  };
 
   // Paragraph animation variants
   const paragraphVariants = {
@@ -124,23 +54,6 @@ const About = () => {
         duration: 0.7,
         ease: "easeOut",
         staggerChildren: 0.2
-      }
-    }
-  };
-
-  // Services section variants
-  const servicesVariants = {
-    hidden: {
-      opacity: 0,
-      y: 100
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: 0.3,
-        ease: "easeOut"
       }
     }
   };

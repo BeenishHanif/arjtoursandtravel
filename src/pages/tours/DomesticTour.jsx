@@ -486,6 +486,7 @@ const DomesticTour = () => {
                 key={tour.id}
                 tour={tour}
                 index={indexOfFirstTour + index}
+                type="domestic"
               />
             ))}
           </div>

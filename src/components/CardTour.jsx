@@ -6,26 +6,26 @@ import { AdvancedImage } from '@cloudinary/react';
 import { fill } from '@cloudinary/url-gen/actions/resize';
 import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 
-const CardTour = ({ tour }) => {
+const CardTour = ({ tour, type }) => {
   const navigate = useNavigate();
   const [loaded, setLoaded] = useState(false);
 
-  // Setup Cloudinary instance
+
   const cld = new Cloudinary({
     cloud: {
-      cloudName: 'dqqt4usxi', // Replace this!
+      cloudName: 'dqqt4usxi', 
     },
   });
 
-  // Create image with transformations
+
   const image = cld
-    .image(tour.image) // Example: 'my-tours/tour1'
+    .image(tour?.image) 
     .format('auto')
     .quality('auto')
-    .resize(fill().width(600).height(300).gravity(autoGravity())); // Resize and auto-crop
+    .resize(fill().width(600).height(300).gravity(autoGravity())); 
 
   const handleClick = () => {
-    navigate(`/tours/domestic/${tour.id}`);
+    navigate(`/tours/${type}/${tour.id}`);
   };
 
   return (
@@ -46,8 +46,6 @@ const CardTour = ({ tour }) => {
           } group-hover:scale-105`}
         />
       </div>
-
-      {/* Content */}
       <div className="mt-4 space-y-2">
         <h3 className="text-lg font-semibold text-gray-800">{tour.title}</h3>
         {tour.departure && (
