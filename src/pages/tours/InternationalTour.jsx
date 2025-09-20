@@ -302,16 +302,32 @@ const InternationalTour = () => {
             </div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-            {currentTours.map((tour, index) => (
-              <CardTour
-                key={tour.id}
-                tour={tour}
-                index={indexOfFirstTour + index}
-                type={"international"}
-              />
-            ))}
+          <div className="p-6">
+            {currentTours && currentTours.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {currentTours.map((tour, index) => (
+                  <CardTour
+                    key={tour.id}
+                    tour={tour}
+                    index={indexOfFirstTour + index}
+                    type={"international"}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center text-center py-16 rounded-2xl ">
+                <h2 className="text-xl font-semibold text-gray-700 mb-3">
+                  No Tours Available
+                </h2>
+                <p className="text-gray-500 max-w-md mb-6">
+                  We don’t have any tours listed right now,
+                  but you can customize your own package
+                  by contacting us directly.
+                </p> 
+              </div>
+            )}
           </div>
+
 
           {/* Pagination Controls */}
           {filteredTours.length > toursPerPage && (

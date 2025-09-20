@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
 
         <div className="space-y-4">
-          <h2 className="text-md  md:text-sm pl-4 py-4 lg:text-md font-semibold text-white">
+          <h2 className="text-md md:text-sm pl-1 py-4 lg:text-md font-semibold text-white">
             Quick Links
           </h2>
           <ul className="grid gap-2 !pt-2 text-md md:text-sm lg:text-md">
@@ -43,7 +43,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/international-travel"
+                to="/tours/international"
                 className="relative group inline-block py-1 px-2 transition duration-300 ease-in-out"
               >
                 International travel
@@ -52,7 +52,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/domestic-travel"
+                to="/tours/domestic"
                 className="relative group inline-block py-1 px-2 transition duration-300 ease-in-out"
               >
                 Domestic travel
@@ -61,7 +61,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/hajj-and-umrah"
+                to="/tours/hajj-umrah"
                 className="relative group inline-block py-1 px-2 transition duration-300 ease-in-out"
               >
                 Hajj & Umrah
@@ -101,7 +101,7 @@ const Footer = () => {
                   </a>
                 </div>
                 <div>
-                  <a href="https://wa.me/923333204268" className="hover:text-[#023f82] transition-colors" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/+923333204268" className="hover:text-[#023f82] transition-colors" target="_blank" rel="noopener noreferrer">
                      +92-333-3204268
                   </a>
                 </div>
@@ -129,7 +129,7 @@ const Footer = () => {
               />
             </a>
             <a
-              href="https://wa.me/923336940534"
+              href="https://wa.me/+923336940534"
               className="group"
               target="_blank"
               rel="noopener noreferrer"
